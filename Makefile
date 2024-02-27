@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/27 16:52:17 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/27 17:05:40 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ LIBFT=$(addsuffix libft.a, ${LIBFT_PATH})
 RM=rm -f
 
 GCC=gcc
-CFLAGS=-Wall -Wextra -Werror -g
+CFLAGS=-Wall -Wextra -Werror
 
 ADDITIONAL_DEFINES='-D OS=unknown'
 
