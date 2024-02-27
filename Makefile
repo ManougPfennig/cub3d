@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/27 17:05:40 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/27 17:18:34 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ endef
 define move_progress_bar
 	@if [ ${START} -eq 0 ]; then \
 		printf "${MAGENTA}"; \
-		echo "COMPILING MINIRT"; \
+		echo "COMPILING CUB3D"; \
 		printf "${RESET}"; \
 		tput cud1; \
 		$(eval START = 1) \
@@ -139,7 +139,7 @@ ${NAME}: ${LIBFT} ${MLX} ${DEST}
 	@$(call move_progress_bar, COUNT)
 	@${GCC} ${CFLAGS} ${DEST} -o ${NAME} ${ADDITIONAL_DEFINES} ${ADDITIONAL_FRAMEWORKS} ${INCLUDES} -L${LIBFT_PATH} -lft ${LINKERS} ${LIBFT}
 	@printf "${GREEN}${BOLD}"
-	@echo "MINIRT COMPILED"
+	@echo "CUB3D COMPILED"
 	@printf "${RESET}"
 	@printf ${SHOW_CURSOR}
 
@@ -151,7 +151,7 @@ clean_mlx:
 	@rm ${MLX}
 
 clean: clean_libft clean_mlx
-	@echo "${GREEN}Cleaning MiniRT..."
+	@echo "${GREEN}Cleaning CUB3D..."
 	@${RM} ${DEST}
 	@printf "${RESET}"
 	@echo "~~~~"
