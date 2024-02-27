@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/27 18:46:30 by gfabre           ###   ########.fr       */
+/*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
+/*   Updated: 2024/02/27 19:05:30 by gfabre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
-int	main(int argc, char **argv)
+# include "libft/libft.h"
+# include "stdio.h"
+
+typedef struct s_map
 {
-	if (!argc == 2)
-		ft_exit(1);
-	parcing()
-	return (0);
-}
+	
+}				t_map;
+
+//Parceur et erreurs
+
+void	ft_exit(int code);
+
+#endif

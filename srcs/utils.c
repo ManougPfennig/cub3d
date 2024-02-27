@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/27 18:46:30 by gfabre           ###   ########.fr       */
+/*   Created: 2024/02/27 17:50:26 by gfabre            #+#    #+#             */
+/*   Updated: 2024/02/27 18:46:15 by gfabre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../cube3d.h"
 
-int	main(int argc, char **argv)
+void	ft_exit(int code)
 {
-	if (!argc == 2)
-		ft_exit(1);
-	parcing()
-	return (0);
+	if (code == 1)
+	{
+		printf("Wrong numbers of arguments!\n");
+		exit (0);
+	}
 }

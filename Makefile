@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
+#    By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/27 17:18:34 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/27 18:36:19 by gfabre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=./cub3d
+NAME= cub3d
 
-SRCS=main.c
+SRCS= main.c, utils.c
 SRCS_DIR=$(addprefix ./srcs/, ${SRCS})
 DEST=${SRCS_DIR:.c=.o}
 NO_OF_FILES:=$(words $(SRCS))
