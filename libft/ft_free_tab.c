@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/27 19:05:30 by gfabre           ###   ########.fr       */
+/*   Created: 2024/02/28 02:59:13 by mapfenni          #+#    #+#             */
+/*   Updated: 2024/02/28 03:00:57 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "stdio.h"
-
-typedef struct s_map
+void	ft_free_tab(char **tab)
 {
-	
-}				t_map;
+	int	i;
 
-//Parceur et erreurs
-
-void	ft_exit(int code);
-
-#endif
+	i = 0;
+	if (tab == NULL)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return ;
+}

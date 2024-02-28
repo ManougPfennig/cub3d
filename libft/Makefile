@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 18:32:43 by mapfenni          #+#    #+#              #
-#    Updated: 2023/11/23 14:02:22 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/28 03:01:12 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ft_toupper.c ft_strmapi.c ft_striteri.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 ft_printf.c ft_putchar.c ft_putnbr_base_len.c ft_putnbr_len.c \
-ft_putstr_len.c
+ft_putstr_len.c ft_free_tab.c
 
 CFLAGS += -Wall -Wextra -Werror
 

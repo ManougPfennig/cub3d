@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 17:50:26 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/27 18:46:15 by gfabre           ###   ########.fr       */
+/*   Created: 2024/02/28 02:55:57 by mapfenni          #+#    #+#             */
+/*   Updated: 2024/02/28 03:06:16 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../cub3d.h"
 
-void	ft_exit(int code)
+void	setup_mlx(t_cub *cub)
 {
-	if (code == 1)
-	{
-		printf("Wrong numbers of arguments!\n");
-		exit (0);
-	}
+	start_mlx(cub);
+	create_window(cub, "cub3d");
+	create_image(cub);
 }
