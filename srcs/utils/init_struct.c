@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 02:10:14 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:43:51 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ t_cub	*init_cub(void)
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;
+	cub->img = NULL;
+	cub->img_x = 960;
+	cub->img_y = 704;
 	cub->error = 0;
 	return (cub);
 }

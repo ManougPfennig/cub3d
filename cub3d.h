@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 03:08:25 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:43:29 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ typedef struct s_texture
 
 typedef struct s_cub
 {
-	t_texture	txtr;
-	t_color		f;
-	t_color		c;
+	t_texture	*txtr;
+	t_color		*f;
+	t_color		*c;
 	float		pos[2]; // x - , y | 
 	float		dir; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
 	char		**map;
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			img_x;
+	int			img_y;
 	int			error; //pour noter si le programme doit exit (si il trouve au moins une erreur) (error++ demande a manoug)
 }				t_cub;
 
