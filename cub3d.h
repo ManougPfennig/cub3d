@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 16:43:29 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:59:01 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void	parsing(t_cub *cub, char **argv);
 
 void	ft_exit(int code);
 void	clean_exit(t_cub *cub, int sig);
+void	check_error(char **argv);
 
 #endif

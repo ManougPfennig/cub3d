@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 02:04:14 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 17:00:02 by mapfenni         ###   ########.fr       */
+/*   Created: 2024/02/28 16:31:03 by gfabre            #+#    #+#             */
+/*   Updated: 2024/02/28 16:39:11 by gfabre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
-void	parsing(t_cub *cub, char **argv)
+void	check_error(char **argv)
 {
-	check_error(argv);
+	
 }

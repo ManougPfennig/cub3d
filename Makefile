@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/28 03:07:51 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/28 16:58:09 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME= cub3d
 SRCS=	main.c \
 		engine/setup_mlx.c \
 		parsing/parsing.c \
+		parsing/errors.c \
 		utils/utils.c \
 		utils/init_struct.c \
 		utils/clean_exit.c
