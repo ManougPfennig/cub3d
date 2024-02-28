@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/28 16:58:09 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/28 17:19:17 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,9 @@ MLX=$(addsuffix libmlx.a, ${MLX_PATH})
 LIBFT_PATH=./libft/
 LIBFT=$(addsuffix libft.a, ${LIBFT_PATH})
 
+GNL_PATH=./gnl/
+GNL=$(addsuffix gnl.a, ${GNL_PATH})
+
 RM=rm -f
 
 GCC=gcc
@@ -118,7 +121,7 @@ else
 	LINKERS=-L ${MLX_PATH} -lmlx -lX11 -lXext -lm
 endif
 
-INCLUDES=-I ./includes/ -I ${MLX_MAKEFILE} -I ${LIBFT_PATH}
+INCLUDES=-I ./includes/ -I ${MLX_MAKEFILE} -I ${LIBFT_PATH} -I ${GNL_PATH}
 
 COUNT=0
 
@@ -135,13 +138,18 @@ ${LIBFT}:
 	@make -s -C ${LIBFT_PATH}
 	@printf "${RESET}"
 
+${GNL}:
+	@echo "${RED}Compiling GNL..."
+	@make -s -C ${GNL_PATH}
+	@printf "${RESET}"
+
 ${MLX}:
 	@echo "${CYAN}Compiling MLX..."
 	@make -s -C ${MLX_MAKEFILE}
 	@mv ${MLX_MAKEFILE}/libmlx.a ${MLX}
 	@printf "${RESET}"
 
-${NAME}: ${LIBFT} ${MLX} ${DEST}
+${NAME}: ${LIBFT} ${GNL} ${MLX} ${DEST}
 	@$(call max_count)
 	@$(call move_progress_bar, COUNT)
 	@${GCC} ${CFLAGS} ${DEST} -o ${NAME} ${ADDITIONAL_DEFINES} ${ADDITIONAL_FRAMEWORKS} ${INCLUDES} -L${LIBFT_PATH} -lft ${LINKERS} ${LIBFT}
@@ -153,11 +161,14 @@ ${NAME}: ${LIBFT} ${MLX} ${DEST}
 clean_libft:
 	@make -s clean -C ${LIBFT_PATH}
 
+clean_gnl:
+	@make -s clean -C ${GNL_PATH}
+
 clean_mlx:
 	@make -s clean -C ${MLX_MAKEFILE}
 	@rm ${MLX}
 
-clean: clean_libft clean_mlx
+clean: clean_libft clean_mlx clean_gnl
 	@echo "${GREEN}Cleaning CUB3D..."
 	@${RM} ${DEST}
 	@printf "${RESET}"
@@ -165,6 +176,7 @@ clean: clean_libft clean_mlx
 
 fclean: clean
 	@${RM} ${LIBFT}
+	@${RM} ${GNL}
 	@${RM} ${NAME}
 
 re: fclean all

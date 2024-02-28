@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 16:59:01 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:11:35 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft/libft.h"
 # include "stdio.h"
 # include "mlx/mlx_linux/mlx.h"
+# include "gnl/get_next_line.h"
 
 typedef struct s_color
 {
