@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2023/06/07 18:12:16 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:29:09 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../cub3d.h"
 
 int	key_pressed(int key, t_data *data)
 {
@@ -44,4 +44,9 @@ int	deal_key(t_data *data)
 {
 	(void)data;
 	return (0);
+}
+
+void	setup_mlx_key_hook(t_cub *cub)
+{
+	
 }

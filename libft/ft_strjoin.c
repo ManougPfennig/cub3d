@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:18:31 by mapfenni          #+#    #+#             */
-/*   Updated: 2023/04/06 17:40:24 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:46:33 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	length = 0;
-	while (s1[i++])
+	while (s1 && s1[i++])
 		length++;
-	while (s2[j++])
+	while (s2 && s2[j++])
 		length++;
 	i = 0;
 	j = 0;
@@ -32,10 +32,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!(dest))
 		return (NULL);
 	dest[length] = '\0';
-	while (s1[i])
+	while (s1 && s1[i])
 		dest[j++] = s1[i++];
 	i = 0;
-	while (s2[i])
+	while (s2 && s2[i])
 		dest[j++] = s2[i++];
 	return (dest);
 }

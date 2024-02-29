@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 17:11:35 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:51:05 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,23 @@
 # include "mlx/mlx_linux/mlx.h"
 # include "gnl/get_next_line.h"
 
+# define MINIMAPSIZE 10
+
 typedef struct s_color
 {
 	int	r;
 	int	g;
 	int	b;
 }				t_color;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
 
 typedef struct s_texture
 {
@@ -47,7 +58,9 @@ typedef struct s_cub
 	char		**map;
 	void		*mlx;
 	void		*win;
-	void		*img;
+	t_img		*img_map;
+	t_img		*img0;
+	t_img		*img1;
 	int			img_x;
 	int			img_y;
 	int			error; //pour noter si le programme doit exit (si il trouve au moins une erreur) (error++ demande a manoug)
@@ -70,6 +83,13 @@ t_color		*init_color(void);
 // engine
 
 void	setup_mlx(t_cub *cub);
+void	start_mlx(t_cub *cub);
+void	create_image(t_cub *cub);
+void	create_window(t_cub *cub, char *name);
+void	*ft_xpm_to_img(t_cub *cub, char *path);
+void	set_imgs(t_cub *cub);
+void	pixel_put(t_img *img, int x, int y, int color);
+void	display_minimap(t_cub *cub, t_img *img);
 
 // parsing
 

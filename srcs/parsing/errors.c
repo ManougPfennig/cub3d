@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfabre <gfabre@student.42nice.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:31:03 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 16:39:11 by gfabre           ###   ########.fr       */
+/*   Updated: 2024/02/28 18:48:47 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	check_error(char **argv)
 {
-	
+	(void)argv;
 }

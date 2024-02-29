@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:04:14 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 17:00:02 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:48:25 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	parsing(t_cub *cub, char **argv)
 {
+	(void)cub;
 	check_error(argv);
 }

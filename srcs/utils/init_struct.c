@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 16:43:51 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/29 01:26:20 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,27 @@ t_color	*init_color(void)
 	c->r = 0;
 	c->g = 0;
 	c->b = 0;
-	return (c)
+	return (c);
+}
+
+t_img	*init_img(void)
+{
+	t_img	*img;
+
+	img = malloc(sizeof(t_img));
+	img->img = NULL;
+	img->addr = NULL;
+	img->bits_per_pixel = 0;
+	img->line_length = 0;
+	img->endian = 0;
+	return (img);
 }
 
 t_cub	*init_cub(void)
 {
 	t_cub	*cub;
 
+	cub = malloc(sizeof(t_cub));
 	cub->txtr = init_texture();
 	cub->f = init_color();
 	cub->c = init_color();
@@ -52,7 +66,9 @@ t_cub	*init_cub(void)
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;
-	cub->img = NULL;
+	cub->img_map = init_img();
+	cub->img0 = init_img();
+	cub->img1 = init_img();
 	cub->img_x = 960;
 	cub->img_y = 704;
 	cub->error = 0;

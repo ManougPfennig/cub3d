@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:46:43 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 01:33:49 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:56:18 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 void	sprite_to_win(t_data *data, char sign, int x, int y)
 {

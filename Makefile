@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/02/28 17:19:17 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/02/28 21:59:23 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME= cub3d
 
 SRCS=	main.c \
 		engine/setup_mlx.c \
+		engine/mlx_functions.c \
+		engine/minimap.c \
 		parsing/parsing.c \
 		parsing/errors.c \
 		utils/utils.c \
