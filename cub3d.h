@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/01 17:11:58 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:44:06 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "mlx/mlx_linux/mlx.h"
 # include "gnl/get_next_line.h"
 
-# define MINIMAPSIZE 10
+# define MAPSIZE 10
 # define WIN_LENGTH 960
 # define WIN_HEIGHT 704
 
@@ -105,14 +105,16 @@ void	setup_img(t_cub *cub, t_img *img, int length, int height);
 void	setup_mlx_event(t_cub *cub);
 t_img	*init_img(void);
 void	init_ceiling_floor_texture(t_cub *cub);
+void	color_img(t_img *img, int color, int length, int height);
 void	set_textures(t_cub *cub);
 void	*ft_xpm_to_img(t_cub *cub, char *path);
 void	create_window(t_cub *cub, char *name);
 void	pixel_put(t_img *img, int x, int y, int color);
 void	make_minimap(t_cub *cub, t_img *img);
-void	display_minimap(t_cub *cub, t_img *img);
+void	display_minimap(t_cub *cub);
 void	move_player(t_cub *cub, float x, float y);
 void	rotate_player(t_cub *cub, int dir);
+void	new_frame(t_cub *cub);
 void	exit_game(t_cub *cub);
 
 // parsing

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 01:56:56 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/01 02:33:45 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:45:03 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	move_player(t_cub *cub, float x, float y)
 {
 	cub->pos[0] += x;
 	cub->pos[1] += y;
+	new_frame(cub);
 }
 
 void	rotate_player(t_cub *cub, int dir)

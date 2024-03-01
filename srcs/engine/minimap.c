@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/01 02:32:11 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:44:31 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	big_pixel_put(t_img *img, int x, int y, int color)
 	int	px;
 	int	py;
 
-	py = MINIMAPSIZE;
+	py = MAPSIZE;
 	while (py >= 0)
 	{
-		px = MINIMAPSIZE;
+		px = MAPSIZE;
 		while (px >= 0)
 		{
-			pixel_put(img, (x * MINIMAPSIZE) + px, (y * MINIMAPSIZE) + py, color);
+			pixel_put(img, (x * MAPSIZE) + px, (y * MAPSIZE) + py, color);
 			px--;	
 		}
 		py--;
@@ -52,9 +52,19 @@ void	make_minimap(t_cub *cub, t_img *img)
 	return ;
 }
 
-void	display_minimap(t_cub *cub, t_img *img)
+void	display_player(t_cub *cub)
+{
+	t_img	*img;
+
+	img = init_img();
+	setup_img(cub, img, MAPSIZE, MAPSIZE);
+	color_img(img, 0x00FF0000, MAPSIZE, MAPSIZE);
+	mlx_put_image_to_window(cub->mlx, cub->win, img, ((int)cub->pos[0] * MAPSIZE), ((int)cub->pos[1] * MAPSIZE));
+}
+
+void	display_minimap(t_cub *cub)
 {
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img_map, 0, 0);
-	big_pixel_put(img, (int)cub->pos[0], (int)cub->pos[1], 0xFFFF0000);
+	display_player(cub);
 	return ;
 }
