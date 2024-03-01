@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/29 01:51:05 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:11:58 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@
 # include "gnl/get_next_line.h"
 
 # define MINIMAPSIZE 10
+# define WIN_LENGTH 960
+# define WIN_HEIGHT 704
+
+# define LEFT_TURN 1
+# define RIGHT_TURN 2
+
+# define W_KEY 122
+# define A_KEY 113
+# define S_KEY 115
+# define D_KEY 100
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
+# define ESCAPE_KEY 65307
+# define MOVE_SIZE 1
 
 typedef struct s_color
 {
@@ -58,12 +72,15 @@ typedef struct s_cub
 	char		**map;
 	void		*mlx;
 	void		*win;
+	t_img		*ceiling;
+	t_img		*floor;
 	t_img		*img_map;
 	t_img		*img0;
 	t_img		*img1;
 	int			img_x;
 	int			img_y;
 	int			error; //pour noter si le programme doit exit (si il trouve au moins une erreur) (error++ demande a manoug)
+	int			current_img;
 }				t_cub;
 
 
@@ -82,14 +99,21 @@ t_color		*init_color(void);
 
 // engine
 
-void	setup_mlx(t_cub *cub);
 void	start_mlx(t_cub *cub);
-void	create_image(t_cub *cub);
-void	create_window(t_cub *cub, char *name);
+void	setup_mlx(t_cub *cub);
+void	setup_img(t_cub *cub, t_img *img, int length, int height);
+void	setup_mlx_event(t_cub *cub);
+t_img	*init_img(void);
+void	init_ceiling_floor_texture(t_cub *cub);
+void	set_textures(t_cub *cub);
 void	*ft_xpm_to_img(t_cub *cub, char *path);
-void	set_imgs(t_cub *cub);
+void	create_window(t_cub *cub, char *name);
 void	pixel_put(t_img *img, int x, int y, int color);
+void	make_minimap(t_cub *cub, t_img *img);
 void	display_minimap(t_cub *cub, t_img *img);
+void	move_player(t_cub *cub, float x, float y);
+void	rotate_player(t_cub *cub, int dir);
+void	exit_game(t_cub *cub);
 
 // parsing
 

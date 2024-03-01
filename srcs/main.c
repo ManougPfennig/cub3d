@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/29 01:50:38 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:13:03 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_exit(1);
 	cub = init_cub();
-	parsing(cub, argv);
-	setup_mlx(cub);
 	cub->map = read_map(argv[1]);
-	display_minimap(cub, cub->img0);
-/*	mlx_hook(data.win, 2, 1L << 0, key_pressed, &data);
-	mlx_hook(data.win, 3, 1L << 1, key_release, &data);
-	mlx_loop_hook(data.mlx, deal_key, &data);
-	mlx_hook(data.win, 17, 0, ft_destroy_windows, &data);
-	mlx_key_hook(data.win, deal_key, &data);*/
+	make_minimap(cub, cub->img_map);
+	init_ceiling_floor_texture(cub);
+//	parsing(cub, argv);
+	setup_mlx(cub);
+	setup_mlx_event(cub);
 	mlx_loop(cub->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/29 01:50:29 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/01 02:32:11 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	big_pixel_put(t_img *img, int x, int y, int color)
 	}
 }
 
-void	display_minimap(t_cub *cub, t_img *img)
+void	make_minimap(t_cub *cub, t_img *img)
 {
 	int	x;
 	int	y;
@@ -49,6 +49,12 @@ void	display_minimap(t_cub *cub, t_img *img)
 		}
 		y++;
 	}
+	return ;
+}
+
+void	display_minimap(t_cub *cub, t_img *img)
+{
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img_map, 0, 0);
 	big_pixel_put(img, (int)cub->pos[0], (int)cub->pos[1], 0xFFFF0000);
-	mlx_put_image_to_window(cub->mlx, cub->win, img->img, 0, 0);
+	return ;
 }

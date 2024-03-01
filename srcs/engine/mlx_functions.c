@@ -36,3 +36,12 @@ void	pixel_put(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
+
+void	exit_game(t_cub *cub)
+{
+	mlx_destroy_window(cub->mlx, cub->win);
+	ft_free_tab(cub->map);
+	printf("Exiting...\n");
+	exit(0);
+	return ;
+}
