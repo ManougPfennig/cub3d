@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:31:03 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 18:48:47 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:07:16 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../incl/cub3d.h"
 
 void	check_error(char **argv)
 {

@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:50:26 by gfabre            #+#    #+#             */
-/*   Updated: 2024/02/28 18:49:07 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:07:37 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../incl/cub3d.h"
 
 void	ft_exit(int code)
 {

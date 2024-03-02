@@ -6,20 +6,20 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/01 02:40:16 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:06:58 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../incl/cub3d.h"
 
 int	key_pressed(int key, t_cub *cub)
 {
 	if (key == W_KEY)
-		move_player(cub, 0,(MOVE_SIZE));
+		move_player(cub, 0,(MOVE_SIZE * -1));
 	else if (key == A_KEY)
 		move_player(cub, (MOVE_SIZE * -1), 0);
 	else if (key == S_KEY)
-		move_player(cub, 0, (MOVE_SIZE * -1));
+		move_player(cub, 0, (MOVE_SIZE));
 	else if (key == D_KEY)
 		move_player(cub, (MOVE_SIZE), 0);
 	else if (key == LEFT_KEY)
@@ -53,6 +53,8 @@ int	loop_hook(t_cub *cub)
 	else if (x < (WIN_LENGTH / 2))
 		rotate_player(cub, LEFT_TURN);
 	mlx_mouse_move(cub->mlx, cub->win, (WIN_LENGTH / 2), (WIN_HEIGHT / 2));
+	new_frame(cub);
+	printf("dir: -%f-\n", cub->dir);
 	return (0);
 }
 

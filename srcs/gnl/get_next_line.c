@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:39:55 by mapfenni          #+#    #+#             */
-/*   Updated: 2023/05/05 18:15:55 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:17:37 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../incl/cub3d.h"
 
 char	*keep_first_nl(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:08:48 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 03:05:22 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:07:23 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../incl/cub3d.h"
 
 void	free_str(char *str)
 {

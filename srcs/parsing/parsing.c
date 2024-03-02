@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:04:14 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 18:48:25 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:07:19 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../incl/cub3d.h"
 
 void	parsing(t_cub *cub, char **argv)
 {

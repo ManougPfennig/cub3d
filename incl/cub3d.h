@@ -6,24 +6,28 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/01 17:44:06 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:13:39 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft/libft.h"
-# include "stdio.h"
-# include "mlx/mlx_linux/mlx.h"
-# include "gnl/get_next_line.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdint.h>
+# include "../libft/libft.h"
+# include "../mlx/mlx_linux/mlx.h"
 
-# define MAPSIZE 10
+# define MAPSIZE 7
 # define WIN_LENGTH 960
 # define WIN_HEIGHT 704
 
 # define LEFT_TURN 1
 # define RIGHT_TURN 2
+# define MOVE_SIZE 1
 
 # define W_KEY 122
 # define A_KEY 113
@@ -32,7 +36,11 @@
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
 # define ESCAPE_KEY 65307
-# define MOVE_SIZE 1
+
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+# define WHITE 0x00FFFFFF
 
 typedef struct s_color
 {
@@ -72,11 +80,10 @@ typedef struct s_cub
 	char		**map;
 	void		*mlx;
 	void		*win;
-	t_img		*ceiling;
-	t_img		*floor;
-	t_img		*img_map;
 	t_img		*img0;
 	t_img		*img1;
+	int			floor_clr;
+	int			ceiling_clr;
 	int			img_x;
 	int			img_y;
 	int			error; //pour noter si le programme doit exit (si il trouve au moins une erreur) (error++ demande a manoug)
@@ -96,35 +103,47 @@ typedef struct s_cub
 t_cub		*init_cub(void);
 t_texture	*init_texture(void);
 t_color		*init_color(void);
+t_img		*init_img(void);
 
 // engine
 
-void	start_mlx(t_cub *cub);
-void	setup_mlx(t_cub *cub);
-void	setup_img(t_cub *cub, t_img *img, int length, int height);
-void	setup_mlx_event(t_cub *cub);
-t_img	*init_img(void);
-void	init_ceiling_floor_texture(t_cub *cub);
-void	color_img(t_img *img, int color, int length, int height);
-void	set_textures(t_cub *cub);
-void	*ft_xpm_to_img(t_cub *cub, char *path);
-void	create_window(t_cub *cub, char *name);
-void	pixel_put(t_img *img, int x, int y, int color);
-void	make_minimap(t_cub *cub, t_img *img);
-void	display_minimap(t_cub *cub);
-void	move_player(t_cub *cub, float x, float y);
-void	rotate_player(t_cub *cub, int dir);
-void	new_frame(t_cub *cub);
-void	exit_game(t_cub *cub);
+void		start_mlx(t_cub *cub);
+void		setup_mlx(t_cub *cub);
+void		setup_img(t_cub *cub, t_img *img, int length, int height);
+void		setup_mlx_event(t_cub *cub);
+void		init_ceiling_floor_texture(t_cub *cub);
+void		color_img(t_img *img, int color, int length, int height);
+void		set_textures(t_cub *cub);
+void		*ft_xpm_to_img(t_cub *cub, char *path);
+void		create_window(t_cub *cub, char *name);
+void		pixel_put(t_img *img, int x, int y, int color);
+void		display_minimap(t_cub *cub, t_img *frame);
+void		move_player(t_cub *cub, float x, float y);
+void		rotate_player(t_cub *cub, int dir);
+void		new_frame(t_cub *cub);
+void		exit_game(t_cub *cub);
 
 // parsing
 
-void	parsing(t_cub *cub, char **argv);
+void		parsing(t_cub *cub, char **argv);
 
 // free and exit
 
-void	ft_exit(int code);
-void	clean_exit(t_cub *cub, int sig);
-void	check_error(char **argv);
+void		ft_exit(int code);
+void		clean_exit(t_cub *cub, int sig);
+void		check_error(char **argv);
+
+// get_next_line
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+char		*get_next_line(int fd);
+char		*keep_first_nl(char *str);
+int			check_no_nl(char *str);
+char		*del_first_nl(char *str);
+void		ft_freestr(char **ptr);
+char		*ft_clean_up(char **ptr, char **ptr2);
 
 #endif

@@ -6,13 +6,15 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/01 17:42:47 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/03/02 21:18:12 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= cub3d
 
 SRCS=	main.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
 		engine/setup_mlx.c \
 		engine/mlx_functions.c \
 		engine/minimap.c \
@@ -104,9 +106,6 @@ MLX=$(addsuffix libmlx.a, ${MLX_PATH})
 LIBFT_PATH=./libft/
 LIBFT=$(addsuffix libft.a, ${LIBFT_PATH})
 
-GNL_PATH=./gnl/
-GNL=$(addsuffix gnl.a, ${GNL_PATH})
-
 RM=rm -f
 
 GCC=gcc
@@ -127,7 +126,7 @@ else
 	LINKERS=-L ${MLX_PATH} -lmlx -lX11 -lXext -lm
 endif
 
-INCLUDES=-I ./includes/ -I ${MLX_MAKEFILE} -I ${LIBFT_PATH} -I ${GNL_PATH}
+INCLUDES=-I ./includes/ -I ${MLX_MAKEFILE} -I ${LIBFT_PATH}
 
 COUNT=0
 
@@ -144,18 +143,13 @@ ${LIBFT}:
 	@make -s -C ${LIBFT_PATH}
 	@printf "${RESET}"
 
-${GNL}:
-	@echo "${RED}Compiling GNL..."
-	@make -s -C ${GNL_PATH}
-	@printf "${RESET}"
-
 ${MLX}:
 	@echo "${CYAN}Compiling MLX..."
 	@make -s -C ${MLX_MAKEFILE}
 	@mv ${MLX_MAKEFILE}/libmlx.a ${MLX}
 	@printf "${RESET}"
 
-${NAME}: ${LIBFT} ${GNL} ${MLX} ${DEST}
+${NAME}: ${LIBFT} ${MLX} ${DEST}
 	@$(call max_count)
 	@$(call move_progress_bar, COUNT)
 	@${GCC} ${CFLAGS} ${DEST} -o ${NAME} ${ADDITIONAL_DEFINES} ${ADDITIONAL_FRAMEWORKS} ${INCLUDES} -L${LIBFT_PATH} -lft ${LINKERS} ${LIBFT}
@@ -167,14 +161,11 @@ ${NAME}: ${LIBFT} ${GNL} ${MLX} ${DEST}
 clean_libft:
 	@make -s clean -C ${LIBFT_PATH}
 
-clean_gnl:
-	@make -s clean -C ${GNL_PATH}
-
 clean_mlx:
 	@make -s clean -C ${MLX_MAKEFILE}
 	@rm ${MLX}
 
-clean: clean_libft clean_mlx clean_gnl
+clean: clean_libft clean_mlx
 	@echo "${GREEN}Cleaning CUB3D..."
 	@${RM} ${DEST}
 	@printf "${RESET}"

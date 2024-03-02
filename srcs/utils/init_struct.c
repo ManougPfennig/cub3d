@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/01 16:33:59 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:07:32 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../incl/cub3d.h"
 
 t_texture	*init_texture(void)
 {
@@ -66,11 +66,10 @@ t_cub	*init_cub(void)
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;
-	cub->ceiling = NULL;
-	cub->floor = NULL;
-	cub->img_map = init_img();
 	cub->img0 = init_img();
 	cub->img1 = init_img();
+	cub->floor_clr = 0;
+	cub->ceiling_clr = 0;
 	cub->img_x = WIN_LENGTH;
 	cub->img_y = WIN_HEIGHT;
 	cub->error = 0;

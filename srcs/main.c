@@ -6,11 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/01 17:13:03 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:16:48 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../incl/cub3d.h"
 
 void	print_tab(char **tab)
 {
@@ -46,6 +46,16 @@ char	**read_map(char *file)
 	return (ft_split(str, '\n'));
 }
 
+void	set_rgb(t_color *f, t_color *c)
+{
+	c->r = 50;
+	c->g = 50;
+	c->b = 100;
+	f->r = 100;
+	f->g = 100;
+	f->b = 100;
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
@@ -53,11 +63,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_exit(1);
 	cub = init_cub();
+	set_rgb(cub->f, cub->c);
+	setup_mlx(cub);
 	cub->map = read_map(argv[1]);
-	make_minimap(cub, cub->img_map);
 	init_ceiling_floor_texture(cub);
 //	parsing(cub, argv);
-	setup_mlx(cub);
 	setup_mlx_event(cub);
 	mlx_loop(cub->mlx);
 	return (0);
