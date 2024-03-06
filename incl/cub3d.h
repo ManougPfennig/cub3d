@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/02 21:13:39 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 22:37:12 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_cub
 	t_texture	*txtr;
 	t_color		*f;
 	t_color		*c;
-	float		pos[2]; // x - , y | 
+	float		pos[2];
 	float		dir; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
 	char		**map;
 	void		*mlx;

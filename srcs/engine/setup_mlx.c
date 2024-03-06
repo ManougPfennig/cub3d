@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:55:57 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 21:07:06 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 22:03:40 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	setup_mlx(t_cub *cub)
 {
 	start_mlx(cub);
 	create_window(cub, "cub3d");
+	cub->img0 = init_img();
+	cub->img1 = init_img();
 	setup_img(cub, cub->img0, WIN_LENGTH, WIN_HEIGHT);
 	setup_img(cub, cub->img1, WIN_LENGTH, WIN_HEIGHT);
 //	set_textures(cub);

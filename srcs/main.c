@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/02 21:16:48 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 22:01:31 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ char	**read_map(char *file)
 
 void	set_rgb(t_color *f, t_color *c)
 {
-	c->r = 50;
-	c->g = 50;
-	c->b = 100;
+	c->r = 10;
+	c->g = 10;
+	c->b = 10;
 	f->r = 100;
 	f->g = 100;
 	f->b = 100;

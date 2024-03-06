@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 21:06:53 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/02 22:15:34 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	big_pixel_put(t_img *img, int x, int y, int color)
 	int	py;
 
 	py = MAPSIZE;
-	while (py >= 0)
+	while (py > 0)
 	{
 		px = MAPSIZE;
-		while (px >= 0)
+		while (px > 0)
 		{
 			pixel_put(img, (x * MAPSIZE) + px, (y * MAPSIZE) + py, color);
 			px--;	
