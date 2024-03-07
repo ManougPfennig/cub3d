@@ -6,11 +6,13 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/02 22:01:31 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:43:04 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
+
+// to delete
 
 void	print_tab(char **tab)
 {
@@ -24,6 +26,8 @@ void	print_tab(char **tab)
 	}
 	return ;
 }
+
+// to delete
 
 char	**read_map(char *file)
 {
@@ -46,6 +50,8 @@ char	**read_map(char *file)
 	return (ft_split(str, '\n'));
 }
 
+// to delete
+
 void	set_rgb(t_color *f, t_color *c)
 {
 	c->r = 10;
@@ -56,6 +62,16 @@ void	set_rgb(t_color *f, t_color *c)
 	f->b = 100;
 }
 
+// to delete
+
+void	set_textures_path(t_cub *cub)
+{
+	cub->txtr->no_path = "textures/wall_n.xpm";
+	cub->txtr->so_path = "textures/wall_s.xpm";
+	cub->txtr->we_path = "textures/wall_w.xpm";
+	cub->txtr->ea_path = "textures/wall_e.xpm";
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
@@ -63,11 +79,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_exit(1);
 	cub = init_cub();
-	set_rgb(cub->f, cub->c);
-	setup_mlx(cub);
-	cub->map = read_map(argv[1]);
-	init_ceiling_floor_texture(cub);
 //	parsing(cub, argv);
+	set_textures_path(cub); // to delete
+	set_rgb(cub->f, cub->c); // to delete
+	setup_mlx(cub);
+	cub->map = read_map(argv[1]); // to_delete
+	init_ceiling_floor_texture(cub);
 	setup_mlx_event(cub);
 	mlx_loop(cub->mlx);
 	return (0);

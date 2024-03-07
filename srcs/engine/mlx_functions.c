@@ -37,6 +37,14 @@ void	pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+int	get_color(t_img *img, int x, int y)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(unsigned int*)dst);
+}
+
 void	exit_game(t_cub *cub)
 {
 	mlx_destroy_window(cub->mlx, cub->win);

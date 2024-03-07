@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/02 22:37:12 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:31:11 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define D_KEY 100
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
+# define MAP_KEY 109
 # define ESCAPE_KEY 65307
 
 # define RED 0x00FF0000
@@ -64,10 +65,10 @@ typedef struct s_texture
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	t_img	*no;
+	t_img	*so;
+	t_img	*we;
+	t_img	*ea;
 }				t_texture;
 
 typedef struct s_cub
@@ -82,6 +83,7 @@ typedef struct s_cub
 	void		*win;
 	t_img		*img0;
 	t_img		*img1;
+	int			toggle_map;
 	int			floor_clr;
 	int			ceiling_clr;
 	int			img_x;
@@ -118,10 +120,14 @@ void		*ft_xpm_to_img(t_cub *cub, char *path);
 void		create_window(t_cub *cub, char *name);
 void		pixel_put(t_img *img, int x, int y, int color);
 void		display_minimap(t_cub *cub, t_img *frame);
+void		toggle_map_display(t_cub *cub);
 void		move_player(t_cub *cub, float x, float y);
 void		rotate_player(t_cub *cub, int dir);
+void		raycasting(t_cub *cub, t_img *frame);
 void		new_frame(t_cub *cub);
 void		exit_game(t_cub *cub);
+int			get_color(t_img *img, int x, int y);
+
 
 // parsing
 

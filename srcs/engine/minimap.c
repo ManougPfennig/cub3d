@@ -6,11 +6,20 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 22:15:34 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:07:12 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
+
+void	toggle_map_display(t_cub *cub)
+{
+	if (cub->toggle_map == 1)
+		cub->toggle_map = 0;
+	else if (cub->toggle_map == 0)
+		cub->toggle_map = 1;
+	return ;
+}
 
 void	big_pixel_put(t_img *img, int x, int y, int color)
 {

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:55:57 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 22:03:40 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:33:28 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	set_textures(t_cub *cub)
 {
-	cub->txtr->no = ft_xpm_to_img(cub, cub->txtr->no_path);
-	cub->txtr->so = ft_xpm_to_img(cub, cub->txtr->so_path);
-	cub->txtr->we = ft_xpm_to_img(cub, cub->txtr->we_path);
-	cub->txtr->ea = ft_xpm_to_img(cub, cub->txtr->ea_path);
+	cub->txtr->no->img = ft_xpm_to_img(cub, cub->txtr->no_path);
+	cub->txtr->so->img = ft_xpm_to_img(cub, cub->txtr->so_path);
+	cub->txtr->we->img = ft_xpm_to_img(cub, cub->txtr->we_path);
+	cub->txtr->ea->img = ft_xpm_to_img(cub, cub->txtr->ea_path);
 }
 
 void	create_window(t_cub *cub, char *name)
@@ -63,5 +63,5 @@ void	setup_mlx(t_cub *cub)
 	cub->img1 = init_img();
 	setup_img(cub, cub->img0, WIN_LENGTH, WIN_HEIGHT);
 	setup_img(cub, cub->img1, WIN_LENGTH, WIN_HEIGHT);
-//	set_textures(cub);
+	set_textures(cub);
 }

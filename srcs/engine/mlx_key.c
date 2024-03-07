@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 21:06:58 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:08:24 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ int	key_pressed(int key, t_cub *cub)
 		rotate_player(cub, LEFT_TURN);
 	else if (key == RIGHT_KEY)
 		rotate_player(cub, RIGHT_TURN);
-	if (key == ESCAPE_KEY)
+	else if (key == MAP_KEY)
+		toggle_map_display(cub);
+	else if (key == ESCAPE_KEY)
 		exit_game(cub);
+	printf("key: %i\n", key);
 	return (0);
 }
 
@@ -54,7 +57,6 @@ int	loop_hook(t_cub *cub)
 		rotate_player(cub, LEFT_TURN);
 	mlx_mouse_move(cub->mlx, cub->win, (WIN_LENGTH / 2), (WIN_HEIGHT / 2));
 	new_frame(cub);
-	printf("dir: -%f-\n", cub->dir);
 	return (0);
 }
 
