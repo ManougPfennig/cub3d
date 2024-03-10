@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/10 03:00:08 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/10 14:33:52 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define WIN_LEN 960
 # define WIN_HEIGHT 704
 # define FOV 90
-// FOV peut être défini tel que :  n ∈ ]0;360[
+// FOV peut être défini tel que :  n ∈ ]0;180[
 
 # define LEFT_TURN 1
 # define RIGHT_TURN 2
