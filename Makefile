@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/07 16:34:04 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/03/08 19:00:48 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRCS=	main.c \
 		engine/init_ceiling_floor_texture.c \
 		engine/new_frame.c \
 		engine/raycasting.c \
+		engine/set_textures.c \
+		engine/sprite_to_win.c \
 		parsing/parsing.c \
 		parsing/errors.c \
 		utils/utils.c \

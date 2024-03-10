@@ -6,19 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 02:55:57 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/07 17:33:28 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:44:07 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
-
-void	set_textures(t_cub *cub)
-{
-	cub->txtr->no->img = ft_xpm_to_img(cub, cub->txtr->no_path);
-	cub->txtr->so->img = ft_xpm_to_img(cub, cub->txtr->so_path);
-	cub->txtr->we->img = ft_xpm_to_img(cub, cub->txtr->we_path);
-	cub->txtr->ea->img = ft_xpm_to_img(cub, cub->txtr->ea_path);
-}
 
 void	create_window(t_cub *cub, char *name)
 {
@@ -61,7 +53,7 @@ void	setup_mlx(t_cub *cub)
 	create_window(cub, "cub3d");
 	cub->img0 = init_img();
 	cub->img1 = init_img();
-	setup_img(cub, cub->img0, WIN_LENGTH, WIN_HEIGHT);
-	setup_img(cub, cub->img1, WIN_LENGTH, WIN_HEIGHT);
+	setup_img(cub, cub->img0, WIN_LEN, WIN_HEIGHT);
+	setup_img(cub, cub->img1, WIN_LEN, WIN_HEIGHT);
 	set_textures(cub);
 }

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:42:31 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/07 17:21:12 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/10 03:06:49 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fill_background(t_cub *cub, t_img *frame)
 	int	x;
 	int	y;
 
-	x = WIN_LENGTH;
+	x = WIN_LEN;
 	while (x >= 0)
 	{
 		y = (WIN_HEIGHT / 2);
@@ -52,8 +52,9 @@ void	new_frame(t_cub *cub)
 
 	frame = img_to_fill(cub);
 	fill_background(cub, frame);
+	put_img_to_frame(cub->txtr->no, frame, 0, 0);
 	if (cub->toggle_map)
 		display_minimap(cub, frame);
-	raycasting(cub, frame);
+//	raycasting(cub, frame);
 	mlx_put_image_to_window(cub->mlx, cub->win, frame->img, 0, 0);
 }

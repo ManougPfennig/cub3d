@@ -6,14 +6,44 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/07 17:15:54 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/10 03:10:25 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
 
+//void	send_ray(t_cub *cub, t_ray *ray, double dir)
+
+double	get_lead_coef(double column, double dir)
+{
+	double	ray_angle;
+	double	fov;
+	double	len;
+
+	fov = (double)FOV;
+	len = (double)WIN_LEN;
+	ray_angle = dir + (((fov / 2) / (len / 2)) * column) - (fov / 2);
+	printf("angle: '%f'\n", ray_angle);
+	if (ray_angle >= 360)
+		ray_angle -= 360;
+	else if (ray_angle < 0)
+		ray_angle += 360;
+	return (tan(ray_angle * (M_PI / 180)));
+}
+
 void	raycasting(t_cub *cub, t_img *frame)
 {
-	(void)cub;
+	double	column;
+	t_ray	ray;
+
+	column = (double)WIN_LEN;
+	while (column > 0)
+	{
+		ray.distance = 0;
+		ray.type = 0;
+//		send_ray(cub, &ray, get_lead_coef(column, cub->dir), );
+		column--;
+	}
+	(void)ray;
 	(void)frame;
 }

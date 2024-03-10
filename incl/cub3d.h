@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/07 17:31:11 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/10 03:00:08 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <math.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx_linux/mlx.h"
 
 # define MAPSIZE 7
-# define WIN_LENGTH 960
+# define WIN_LEN 960
 # define WIN_HEIGHT 704
+# define FOV 90
+// FOV peut être défini tel que :  n ∈ ]0;360[
 
 # define LEFT_TURN 1
 # define RIGHT_TURN 2
@@ -42,6 +45,21 @@
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
 # define WHITE 0x00FFFFFF
+
+# define N_WALL 10
+# define S_WALL 20
+# define E_WALL 30
+# define W_WALL 40
+
+# ifndef M_PI
+#  define M_PI 3.141592653589793
+# endif 
+
+typedef struct s_ray
+{
+	int		type;
+	double	distance;
+}				t_ray;
 
 typedef struct s_color
 {
@@ -76,8 +94,8 @@ typedef struct s_cub
 	t_texture	*txtr;
 	t_color		*f;
 	t_color		*c;
-	float		pos[2];
-	float		dir; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
+	double		pos[2];
+	double		dir; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
 	char		**map;
 	void		*mlx;
 	void		*win;
@@ -127,6 +145,7 @@ void		raycasting(t_cub *cub, t_img *frame);
 void		new_frame(t_cub *cub);
 void		exit_game(t_cub *cub);
 int			get_color(t_img *img, int x, int y);
+void		put_img_to_frame(t_img *img, t_img *frame, int x, int y);
 
 
 // parsing

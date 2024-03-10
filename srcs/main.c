@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/07 17:43:04 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/10 03:07:16 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	main(int argc, char **argv)
 	setup_mlx(cub);
 	cub->map = read_map(argv[1]); // to_delete
 	init_ceiling_floor_texture(cub);
+	cub->dir = 45;
+	raycasting(cub, NULL);
 	setup_mlx_event(cub);
 	mlx_loop(cub->mlx);
 	return (0);

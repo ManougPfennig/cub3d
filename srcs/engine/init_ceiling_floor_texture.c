@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:26:34 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 21:18:44 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:26:05 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	rgb_to_hex(int r, int g, int b)
 {
-	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
 void	init_ceiling_floor_texture(t_cub *cub)

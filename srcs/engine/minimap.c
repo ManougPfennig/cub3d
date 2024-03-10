@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/07 17:07:12 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:25:23 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	big_pixel_put(t_img *img, int x, int y, int color)
 		while (px > 0)
 		{
 			pixel_put(img, (x * MAPSIZE) + px, (y * MAPSIZE) + py, color);
-			px--;	
+			px--;
 		}
 		py--;
 	}
