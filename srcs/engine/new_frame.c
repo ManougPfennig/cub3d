@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:42:31 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/10 03:06:49 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:40:03 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_img	*img_to_fill(t_cub *cub)
 	else
 	{
 		cub->current_img = 0;
-		return (cub->img1);
+		return (cub->img0);
 	}
 }
 

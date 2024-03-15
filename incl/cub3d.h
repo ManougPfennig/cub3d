@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/10 14:33:52 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:11:22 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 
 typedef struct s_ray
 {
+	double	hit;
 	int		type;
 	double	distance;
 }				t_ray;

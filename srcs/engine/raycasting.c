@@ -6,12 +6,12 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/10 15:48:26 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:42:27 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
-/*
+
 void	send_ray(t_cub *cub, t_ray *ray, double coef)
 {
 	double	ry;
@@ -24,7 +24,7 @@ void	send_ray(t_cub *cub, t_ray *ray, double coef)
 		if ()
 	}
 }
-*/
+
 double	get_lead_coef(double column, double dir)
 {
 	double	ray_angle;
