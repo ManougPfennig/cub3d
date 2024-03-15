@@ -12,34 +12,71 @@
 
 #include "../../incl/cub3d.h"
 
-void	send_ray(t_cub *cub, t_ray *ray, double coef)
+/*void	init_steps(double coef, t_ray *ray)
 {
-	double	ry;
-	double	rx;
-
-	ry = cub->pos[1];
-	rx = cub->pos[0];
-	while(ry >= 0 && tab[(int)ry] && rx >= 0 && tab[(int)ry][(int)rx])
-	{
-		if ()
-	}
+	if ()
 }
 
-double	get_lead_coef(double column, double dir)
+void	send_ray(t_cub *cub, t_ray *ray, double coef)
 {
-	double	ray_angle;
-	double	fov;
-	double	len;
+	double	rayY;
+	double	rayX;
 
-	fov = (double)FOV;
-	len = (double)WIN_LEN;
-	ray_angle = dir + (((fov / 2) / (len / 2)) * column) - (fov / 2);
-	if (ray_angle >= 360)
-		ray_angle -= 360;
-	else if (ray_angle < 0)
-		ray_angle += 360;
-	printf("angle: '%f'   --    ", ray_angle);
-	return (tan(ray_angle * (M_PI / 180)));
+	rayY = cub->pos[1];
+	rayX = cub->pos[0];
+	while (ray->hit == 0)
+	{
+        //jump to next map square, either in x-direction, or in y-direction
+		if (sideDistX < sideDistY)
+		{
+			sideDistX += deltaDistX;
+			mapX += stepX;
+			side = 0;
+		}
+		else
+		{
+			sideDistY += deltaDistY;
+			mapY += stepY;
+			side = 1;
+		}
+        //Check if ray has hit a wall
+		if (worldMap[rayX][rayY] > 0)
+			ray->hit = 1;
+	} 
+}*/
+
+void	get_dir(t_cub *cub, t_ray *r, int column)
+{
+	r->rayDir[0] = cub->dir[0];
+	r->rayDir[1] = cub->dir[1];
+	r->deltaDist[0] = sqrt(1 + (r->rayDir[1] * r->rayDir[1]) / (r->rayDir[0] * r->rayDir[0]));
+	r->deltaDist[1] = sqrt(1 + (r->rayDir[0] * r->rayDir[0]) / (r->rayDir[1] * r->rayDir[1]));
+	r->map[0] = (int)cub->pos[0];
+	r->map[1] = (int)cub->pos[1];
+}
+
+void	get_steps(t_cub *cub, t_ray *r)
+{
+	if (r->rayDir[0] < 0)
+	{
+		r->step[0] = -1;
+		r->sideDist[0] = (cub->pos[0] - (double)r->map[0]) * r->deltaDist[0];
+	}
+	else
+	{
+		r->step[0] = 1;
+		r->sideDist[0] = ((double)r->map[0] + 1.0 - cub->pos[0]) * r->deltaDist[0];
+	}
+	if (r->rayDir[1] < 0)
+	{
+		r->step[1] = -1;
+		r->sideDist[1] = (cub->pos[1] - (double)r->map[1]) * r->deltaDist[1];
+	}
+	else
+	{
+		r->step[1] = 1;
+		r->sideDist[1] = ((double)r->map[1] + 1.0 - cub->pos[1]) * r->deltaDist[1];
+	}
 }
 
 void	raycasting(t_cub *cub, t_img *frame)
@@ -52,8 +89,9 @@ void	raycasting(t_cub *cub, t_img *frame)
 	{
 		ray.distance = 0;
 		ray.type = 0;
+		get_steps(cub, &ray);
+		get_lead_coef(cub, column, cub->dir);
 //		send_ray(cub, &ray, get_lead_coef(column, cub->dir));
-		printf("coef: '%f'\n", get_lead_coef(column, cub->dir));
 		column--;
 	}
 	(void)ray;

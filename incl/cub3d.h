@@ -57,7 +57,13 @@
 
 typedef struct s_ray
 {
-	double	hit;
+	
+	int		map[2];
+	double	sideDist[2];
+	double	step[2]
+	double	rayDir[2];
+	double	deltaDist[2];
+	int		hit;
 	int		type;
 	double	distance;
 }				t_ray;
@@ -96,7 +102,7 @@ typedef struct s_cub
 	t_color		*f;
 	t_color		*c;
 	double		pos[2];
-	double		dir; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
+	double		dir[2]; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
 	char		**map;
 	void		*mlx;
 	void		*win;

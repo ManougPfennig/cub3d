@@ -62,7 +62,8 @@ t_cub	*init_cub(void)
 	cub->c = init_color();
 	cub->pos[0] = 0;
 	cub->pos[1] = 0;
-	cub->dir = 0;
+	cub->dir[0] = 1;
+	cub->dir[1] = 1;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;

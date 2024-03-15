@@ -85,7 +85,6 @@ int	main(int argc, char **argv)
 	setup_mlx(cub);
 	cub->map = read_map(argv[1]); // to_delete
 	init_ceiling_floor_texture(cub);
-	cub->dir = 45; // to delete
 	raycasting(cub, NULL);
 	setup_mlx_event(cub);
 	mlx_loop(cub->mlx);
