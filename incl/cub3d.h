@@ -25,7 +25,7 @@
 # define MAPSIZE 7
 # define WIN_LEN 960
 # define WIN_HEIGHT 704
-# define FOV 90
+# define FOV 66
 // FOV peut être défini tel que :  n ∈ ]0;180[
 
 # define LEFT_TURN 1
@@ -59,10 +59,12 @@ typedef struct s_ray
 {
 	
 	int		map[2];
+	double	cameraX;
 	double	sideDist[2];
 	double	step[2];
 	double	rayDir[2];
 	double	deltaDist[2];
+	double	plane[2];
 	int		hit;
 	int		type;
 	double	distance;
