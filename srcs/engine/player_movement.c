@@ -20,12 +20,14 @@ void	move_player(t_cub *cub, float x, float y)
 
 void	rotate_player(t_cub *cub, int dir)
 {
-	if (dir == LEFT_TURN)
+	(void)dir;
+	(void)cub;
+/*	if (dir == LEFT_TURN)
 		cub->dir += -1;
 	else if (dir == RIGHT_TURN)
 		cub->dir += +1;
 	if (cub->dir >= 360)
 		cub->dir += -360;
 	else if (cub->dir < 0)
-		cub->dir += 360;
+		cub->dir += 360;*/
 }

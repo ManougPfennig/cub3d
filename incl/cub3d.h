@@ -60,7 +60,7 @@ typedef struct s_ray
 	
 	int		map[2];
 	double	sideDist[2];
-	double	step[2]
+	double	step[2];
 	double	rayDir[2];
 	double	deltaDist[2];
 	int		hit;
@@ -82,6 +82,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		length;
 }				t_img;
 
 typedef struct s_texture

@@ -47,6 +47,7 @@ void	send_ray(t_cub *cub, t_ray *ray, double coef)
 
 void	get_dir(t_cub *cub, t_ray *r, int column)
 {
+	(void)column;
 	r->rayDir[0] = cub->dir[0];
 	r->rayDir[1] = cub->dir[1];
 	r->deltaDist[0] = sqrt(1 + (r->rayDir[1] * r->rayDir[1]) / (r->rayDir[0] * r->rayDir[0]));
@@ -90,8 +91,8 @@ void	raycasting(t_cub *cub, t_img *frame)
 		ray.distance = 0;
 		ray.type = 0;
 		get_steps(cub, &ray);
-		get_lead_coef(cub, column, cub->dir);
 //		send_ray(cub, &ray, get_lead_coef(column, cub->dir));
+		display_texture(frame, ray, column);
 		column--;
 	}
 	(void)ray;
