@@ -83,7 +83,7 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 	int		width;
-	int		length;
+	int		height;
 }				t_img;
 
 typedef struct s_texture
@@ -143,7 +143,7 @@ void		setup_mlx_event(t_cub *cub);
 void		init_ceiling_floor_texture(t_cub *cub);
 void		color_img(t_img *img, int color, int length, int height);
 void		set_textures(t_cub *cub);
-void		*ft_xpm_to_img(t_cub *cub, char *path);
+void		*ft_xpm_to_img(t_cub *cub, t_img *img, char *path);
 void		create_window(t_cub *cub, char *name);
 void		pixel_put(t_img *img, int x, int y, int color);
 void		display_minimap(t_cub *cub, t_img *frame);

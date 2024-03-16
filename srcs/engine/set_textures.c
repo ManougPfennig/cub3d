@@ -17,7 +17,7 @@ t_img	*setup_texture(t_cub *cub, char *path)
 	t_img	*texture;
 
 	texture = init_img();
-	texture->img = ft_xpm_to_img(cub, path);
+	texture->img = ft_xpm_to_img(cub, texture, path);
 	texture->addr = mlx_get_data_addr(texture->img, \
 	&texture->bits_per_pixel, &texture->line_length, &texture->endian);
 	return (texture);

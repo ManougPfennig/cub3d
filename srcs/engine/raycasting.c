@@ -92,7 +92,7 @@ void	raycasting(t_cub *cub, t_img *frame)
 		ray.type = 0;
 		get_steps(cub, &ray);
 //		send_ray(cub, &ray, get_lead_coef(column, cub->dir));
-		display_texture(frame, ray, column);
+//		display_texture(frame, ray, column);
 		column--;
 	}
 	(void)ray;

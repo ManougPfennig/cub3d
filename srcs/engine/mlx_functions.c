@@ -12,15 +12,11 @@
 
 #include "../../incl/cub3d.h"
 
-void	*ft_xpm_to_img(t_cub *cub, char *path)
+void	*ft_xpm_to_img(t_cub *cub, t_img *txtr, char *path)
 {
 	void	*ptr;
-	int		width;
-	int		height;
 
-	width = cub->img_x / 4;
-	height = cub->img_y / 4;
-	ptr = mlx_xpm_file_to_image(cub->mlx, path, &width, &height);
+	ptr = mlx_xpm_file_to_image(cub->mlx, path, &txtr->width, &txtr->height);
 	if (!ptr)
 	{
 		printf("Error : Sprite not found : mlx_xpm_to_image failed\n");
