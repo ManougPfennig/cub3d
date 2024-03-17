@@ -12,6 +12,30 @@
 
 #include "../../incl/cub3d.h"
 
+t_ray	*init_ray(void)
+{
+	t_ray	*ray;
+
+	ray = malloc(sizeof(t_ray));
+	ray->side = 0;
+	ray->type = 0;
+	ray->distance = 0;
+	ray->cameraX = 0;
+	ray->map[0] = 0;
+	ray->sideDist[0] = 0;
+	ray->step[0] = 0;
+	ray->rayDir[0] = 0;
+	ray->deltaDist[0] = 0;
+	ray->plane[0] = 0;
+	ray->map[1] = 0;
+	ray->sideDist[1] = 0;
+	ray->step[1] = 0;
+	ray->rayDir[1] = 0;
+	ray->deltaDist[1] = 0;
+	ray->plane[1] = 0;
+	return (ray);
+}
+
 t_texture	*init_texture(void)
 {
 	t_texture	*t;
@@ -62,10 +86,11 @@ t_cub	*init_cub(void)
 	cub->txtr = init_texture();
 	cub->f = init_color();
 	cub->c = init_color();
-	cub->pos[0] = 0;
-	cub->pos[1] = 0;
-	cub->dir[0] = 1;
-	cub->dir[1] = 1;
+	cub->ray = init_ray();
+	cub->pos[0] = 2;
+	cub->pos[1] = 2;
+	cub->dir[0] = -1.0;
+	cub->dir[1] = 0;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;

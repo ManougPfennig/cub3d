@@ -32,8 +32,8 @@
 # define RIGHT_TURN 2
 # define MOVE_SIZE 1
 
-# define W_KEY 122
-# define A_KEY 113
+# define W_KEY 119
+# define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
 # define LEFT_KEY 65361
@@ -57,17 +57,16 @@
 
 typedef struct s_ray
 {
-	
-	int		map[2];
+	int		side;
+	int		type;
+	double	distance;
 	double	cameraX;
+	int		map[2];
 	double	sideDist[2];
 	double	step[2];
 	double	rayDir[2];
 	double	deltaDist[2];
 	double	plane[2];
-	int		hit;
-	int		type;
-	double	distance;
 }				t_ray;
 
 typedef struct s_color
@@ -105,6 +104,7 @@ typedef struct s_cub
 	t_texture	*txtr;
 	t_color		*f;
 	t_color		*c;
+	t_ray		*ray;
 	double		pos[2];
 	double		dir[2]; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
 	char		**map;
@@ -135,6 +135,7 @@ t_cub		*init_cub(void);
 t_texture	*init_texture(void);
 t_color		*init_color(void);
 t_img		*init_img(void);
+t_ray		*init_ray(void);
 
 // engine
 

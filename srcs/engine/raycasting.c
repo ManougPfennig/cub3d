@@ -12,92 +12,91 @@
 
 #include "../../incl/cub3d.h"
 
-/*void	init_steps(double coef, t_ray *ray)
+void	send_ray(t_cub *cub, t_ray *r)
 {
-	if ()
-}
+	int	hit;
 
-void	send_ray(t_cub *cub, t_ray *ray, double coef)
-{
-	double	rayY;
-	double	rayX;
-
-	rayY = cub->pos[1];
-	rayX = cub->pos[0];
-	while (ray->hit == 0)
+	hit = 0;
+	while (hit == 0)
 	{
-        //jump to next map square, either in x-direction, or in y-direction
-		if (sideDistX < sideDistY)
+		if (r->sideDist[0] < r->sideDist[1])
 		{
-			sideDistX += deltaDistX;
-			mapX += stepX;
-			side = 0;
+			r->sideDist[0] += r->deltaDist[0];
+			r->map[0] += r->step[0];
+			r->side = 0;
 		}
 		else
 		{
-			sideDistY += deltaDistY;
-			mapY += stepY;
-			side = 1;
+			r->sideDist[1] += r->deltaDist[1];
+			r->map[1] += r->step[1];
+			r->side = 1;
 		}
-        //Check if ray has hit a wall
-		if (worldMap[rayX][rayY] > 0)
-			ray->hit = 1;
-	} 
-}*/
+		if (cub->map[r->map[0]][r->map[1]] == '1')
+			hit = 1;
+	}
+}
 
-void	get_dir(t_cub *cub, t_ray *r, int column)
+void	get_ray_len(t_ray *r)
 {
-	r->rayDir[0] = cub->dir[0] + r->plane[0] * r->cameraX;
-	r->rayDir[1] = cub->dir[1] + r->plane[1] * r->cameraX;
-	r->deltaDist[0] = sqrt(1 + (r->rayDir[1] * r->rayDir[1]) / (r->rayDir[0] * r->rayDir[0]));
-	r->deltaDist[1] = sqrt(1 + (r->rayDir[0] * r->rayDir[0]) / (r->rayDir[1] * r->rayDir[1]));
+	if (r->side == 0)
+		r->distance = (r->sideDist[0] - r->deltaDist[0]);
+	else
+		r->distance = (r->sideDist[1] - r->deltaDist[1]);
+}
+
+void	get_dir(t_cub *cub, t_ray *r, int i)
+{
+	r->cameraX = (2 * i) / (double)WIN_LEN - 1.0;
 	r->map[0] = (int)cub->pos[0];
 	r->map[1] = (int)cub->pos[1];
+	r->rayDir[0] = cub->dir[0] + r->plane[0] * r->cameraX;
+	r->rayDir[1] = cub->dir[1] + r->plane[1] * r->cameraX;
+	r->deltaDist[0] = fabs(1 / r->rayDir[0]);
+	r->deltaDist[1] = fabs(1 / r->rayDir[1]);
 }
 
 void	get_steps(t_cub *cub, t_ray *r)
 {
 	if (r->rayDir[0] < 0)
 	{
-		r->step[0] = -1;
-		r->sideDist[0] = (cub->pos[0] - (double)r->map[0]) * r->deltaDist[0];
+		r->step[0] = -1.0;
+		r->sideDist[0] = (cub->pos[0] - r->map[0]) * r->deltaDist[0];
 	}
 	else
 	{
-		r->step[0] = 1;
-		r->sideDist[0] = ((double)r->map[0] + 1.0 - cub->pos[0]) * r->deltaDist[0];
+		r->step[0] = 1.0;
+		r->sideDist[0] = (r->map[0] + 1.0 - cub->pos[0]) * r->deltaDist[0];
 	}
 	if (r->rayDir[1] < 0)
 	{
-		r->step[1] = -1;
-		r->sideDist[1] = (cub->pos[1] - (double)r->map[1]) * r->deltaDist[1];
+		r->step[1] = -1.0;
+		r->sideDist[1] = (cub->pos[1] - r->map[1]) * r->deltaDist[1];
 	}
 	else
 	{
-		r->step[1] = 1;
-		r->sideDist[1] = ((double)r->map[1] + 1.0 - cub->pos[1]) * r->deltaDist[1];
+		r->step[1] = 1.0;
+		r->sideDist[1] = (r->map[1] + 1.0 - cub->pos[1]) * r->deltaDist[1];
 	}
 }
 
 void	raycasting(t_cub *cub, t_img *frame)
 {
-	double	column;
-	t_ray	ray;
+	t_ray	*ray;
+	int		i;
 
-	column = (double)WIN_LEN;
-	while (column > 0)
+	i = 0;
+	ray = cub->ray;
+	ray->plane[0] = 0;
+	ray->plane[1] = (double)FOV / 100.0;
+	while (i < WIN_LEN)
 	{
-		ray.distance = 0;
-		ray.type = 0;
-		r.cameraX = 2 * column / (double)WIN_LEN - 1;
-		r->plane[0] = 0;
-		r->plane[1] = (double)(FOV / 100);
-		get_dir(t_cub *cub, t_ray *r, column)
-		get_steps(cub, &ray);
-//		send_ray(cub, &ray, get_lead_coef(column, cub->dir));
+		get_dir(cub, ray, i);
+		get_steps(cub, ray);
+		send_ray(cub, ray);
+		get_ray_len(ray);
 //		display_texture(frame, ray, column);
-		column--;
+		i++;
 	}
-	(void)ray;
+	free(ray);
 	(void)frame;
 }
