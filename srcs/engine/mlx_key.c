@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 18:02:21 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:22:59 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,12 @@ int	key_pressed(int key, t_cub *cub)
 		toggle_map_display(cub);
 	else if (key == ESCAPE_KEY)
 		exit_game(cub);
-	printf("key: %i\n", key);
-	printf("dir:	%f	%f\n", cub->dir[0], cub->dir[1]);
 	return (0);
 }
 
 int	mouse_moved(int x, int y, t_cub *cub)
 {
-	(void)cub;
-	printf("x: -%i-      y: -%i-\n", x, y);
+	(void)x;
 	if (y < 0)
 		rotate_player(cub, LEFT_TURN, ROT_SPEED);
 	else if (y > 0)
@@ -53,9 +50,9 @@ int	loop_hook(t_cub *cub)
 
 	mlx_mouse_get_pos(cub->mlx, cub->win, &x, &y);
 	if (x > (WIN_LEN / 2))
-		rotate_player(cub, RIGHT_TURN);
+		rotate_player(cub, RIGHT_TURN, ROT_SPEED);
 	else if (x < (WIN_LEN / 2))
-		rotate_player(cub, LEFT_TURN);
+		rotate_player(cub, LEFT_TURN, ROT_SPEED);
 	mlx_mouse_move(cub->mlx, cub->win, (WIN_LEN / 2), (WIN_HEIGHT / 2));*/
 	new_frame(cub);
 	return (0);

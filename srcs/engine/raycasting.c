@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 19:23:16 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:15:33 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,16 @@ void	get_texture_val(t_ray *r)
 		r->type = N_WALL;
 }
 
-void	get_texture_line(t_ray *r)
+void	get_texture_line(t_cub *cub, t_ray *r)
 {
-	
+	int	temp;
+
+	if (r->side == 0)
+		r->line = cub->pos[1] + r->distance * r->rayDir[1];
+    else
+		r->line = cub->pos[0] + r->distance * r->rayDir[0];
+	temp = (int)r->line;
+	r->line = r->line - (double)temp;
 }
 
 int	send_ray(t_cub *cub, t_ray *r)
@@ -75,7 +82,7 @@ int	send_ray(t_cub *cub, t_ray *r)
 			hit = 1;
 	}
 	get_texture_val(r);
-	get_texture_line(r);
+	get_texture_line(cub, r);
 	return (HIT_WALL);
 }
 
