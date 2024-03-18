@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 02:04:14 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/02 21:07:19 by mapfenni         ###   ########.fr       */
+/*   Created: 2024/03/16 17:54:57 by edfirmin          #+#    #+#             */
+/*   Updated: 2024/03/16 17:55:12 by edfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incl/cub3d.h"
+#include "libft.h"
 
-void	parsing(t_cub *cub, char **argv)
+void	*ft_free(char *str1, char *str2)
 {
-	(void)cub;
-	check_error(argv);
+	if (str1)
+		free(str1);
+	if (str2)
+		free(str2);
+	return (NULL);
 }

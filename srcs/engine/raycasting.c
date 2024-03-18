@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/12 17:42:27 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:00:09 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	get_dir(t_cub *cub, t_ray *r, int i)
 	r->cameraX = (2 * i) / (double)WIN_LEN - 1.0;
 	r->map[0] = (int)cub->pos[0];
 	r->map[1] = (int)cub->pos[1];
-	r->rayDir[0] = cub->dir[0] + r->plane[0] * r->cameraX;
-	r->rayDir[1] = cub->dir[1] + r->plane[1] * r->cameraX;
+	r->rayDir[0] = cub->dir[0] + cub->plane[0] * r->cameraX;
+	r->rayDir[1] = cub->dir[1] + cub->plane[1] * r->cameraX;
 	r->deltaDist[0] = fabs(1 / r->rayDir[0]);
 	r->deltaDist[1] = fabs(1 / r->rayDir[1]);
 }
@@ -85,18 +85,15 @@ void	raycasting(t_cub *cub, t_img *frame)
 	int		i;
 
 	i = 0;
+
 	ray = cub->ray;
-	ray->plane[0] = 0;
-	ray->plane[1] = (double)FOV / 100.0;
 	while (i < WIN_LEN)
 	{
 		get_dir(cub, ray, i);
 		get_steps(cub, ray);
 		send_ray(cub, ray);
 		get_ray_len(ray);
-//		display_texture(frame, ray, column);
+		display_texture(cub, frame, ray, i);
 		i++;
 	}
-	free(ray);
-	(void)frame;
 }

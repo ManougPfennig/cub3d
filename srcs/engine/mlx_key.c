@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/11 16:41:55 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:38:35 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	key_pressed(int key, t_cub *cub)
 {
+//	else if (key == A_KEY)
+//		move_player(cub, -(STEP_SIZE), 0);
+//	else if (key == D_KEY)
+//		move_player(cub, (STEP_SIZE), 0);
 	if (key == W_KEY)
-		move_player(cub, 0, (MOVE_SIZE * -1));
-	else if (key == A_KEY)
-		move_player(cub, (MOVE_SIZE * -1), 0);
+		move_player(cub, 0, -(STEP_SIZE));
 	else if (key == S_KEY)
-		move_player(cub, 0, (MOVE_SIZE));
-	else if (key == D_KEY)
-		move_player(cub, (MOVE_SIZE), 0);
+		move_player(cub, 0, (STEP_SIZE));
 	else if (key == LEFT_KEY)
 		rotate_player(cub, LEFT_TURN);
 	else if (key == RIGHT_KEY)

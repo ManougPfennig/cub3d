@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   utile2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 16:31:03 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/02 21:07:16 by mapfenni         ###   ########.fr       */
+/*   Created: 2024/03/02 16:35:44 by edfirmin          #+#    #+#             */
+/*   Updated: 2024/03/16 17:56:41 by edfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
 
-void	check_error(char **argv)
+int	tab_len(char **tab)
 {
-	(void)argv;
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+void	go_free(char **ttab, char **tab, char *buff, t_cub *data)
+{
+	ft_free_tab(ttab);
+	ft_free_tab(tab);
+	free (buff);
+	error_mes(3, data);
 }

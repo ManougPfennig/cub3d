@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/08 19:00:48 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/03/18 15:47:55 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,16 @@ SRCS=	main.c \
 		engine/raycasting.c \
 		engine/set_textures.c \
 		engine/sprite_to_win.c \
-		parsing/parsing.c \
-		parsing/errors.c \
+		engine/display_texture.c \
+		parsing/get_data.c \
+		parsing/get_map.c \
+		parsing/get_tex_utile.c \
+		parsing/get_tex.c  \
+		parsing/pars_map_utile1.c \
+		parsing/pars_map_utile2.c \
+		parsing/pars_map.c \
+		parsing/utile1.c \
+		parsing/utile2.c \
 		utils/utils.c \
 		utils/init_struct.c \
 		utils/clean_exit.c

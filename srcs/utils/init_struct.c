@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/10 02:45:26 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:00:25 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ t_ray	*init_ray(void)
 	ray->step[0] = 0;
 	ray->rayDir[0] = 0;
 	ray->deltaDist[0] = 0;
-	ray->plane[0] = 0;
 	ray->map[1] = 0;
 	ray->sideDist[1] = 0;
 	ray->step[1] = 0;
 	ray->rayDir[1] = 0;
 	ray->deltaDist[1] = 0;
-	ray->plane[1] = 0;
 	return (ray);
 }
 
@@ -87,10 +85,12 @@ t_cub	*init_cub(void)
 	cub->f = init_color();
 	cub->c = init_color();
 	cub->ray = init_ray();
-	cub->pos[0] = 2;
-	cub->pos[1] = 2;
-	cub->dir[0] = -1.0;
+	cub->pos[0] = 10;
+	cub->pos[1] = 15;
+	cub->dir[0] = -1;
 	cub->dir[1] = 0;
+	cub->plane[0] = 0;
+	cub->plane[1] = (double)FOV / 100.0;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 18:37:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/02/28 03:01:39 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:52:08 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void*));
 void			ft_free_tab(char **tab);
+int				ft_strstr(const char *haystack, const char *needle);
+void			*ft_free(char *str1, char *str2);
 
 #endif

@@ -6,13 +6,17 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/12 18:11:22 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:46:46 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <string.h>
+# include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -30,7 +34,8 @@
 
 # define LEFT_TURN 1
 # define RIGHT_TURN 2
-# define MOVE_SIZE 1
+# define STEP_SIZE 1.0
+# define ROT_SPEED 0.1
 
 # define W_KEY 119
 # define A_KEY 97
@@ -66,8 +71,14 @@ typedef struct s_ray
 	double	step[2];
 	double	rayDir[2];
 	double	deltaDist[2];
-	double	plane[2];
 }				t_ray;
+
+typedef struct s_draw
+{
+	int	height;
+	int	start_y;
+	int	end_y;
+}				t_draw;
 
 typedef struct s_color
 {
@@ -93,6 +104,8 @@ typedef struct s_texture
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*floor;
+	char	*ceiling;
 	t_img	*no;
 	t_img	*so;
 	t_img	*we;
@@ -107,6 +120,7 @@ typedef struct s_cub
 	t_ray		*ray;
 	double		pos[2];
 	double		dir[2]; // NSEW (0, 90, 180, 270) remplir pendant juste avant floodfill
+	double		plane[2];
 	char		**map;
 	void		*mlx;
 	void		*win;
@@ -151,18 +165,69 @@ void		create_window(t_cub *cub, char *name);
 void		pixel_put(t_img *img, int x, int y, int color);
 void		display_minimap(t_cub *cub, t_img *frame);
 void		toggle_map_display(t_cub *cub);
-void		move_player(t_cub *cub, float x, float y);
+void		move_player(t_cub *cub, double x, double y);
 void		rotate_player(t_cub *cub, int dir);
 void		raycasting(t_cub *cub, t_img *frame);
 void		new_frame(t_cub *cub);
 void		exit_game(t_cub *cub);
 int			get_color(t_img *img, int x, int y);
 void		put_img_to_frame(t_img *img, t_img *frame, int x, int y);
-
+void		display_texture(t_cub *cub, t_img *frame, t_ray *ray, int column);
 
 // parsing
 
-void		parsing(t_cub *cub, char **argv);
+//----------utile1----------//
+void	free_all(t_cub *data);
+int		ft_free2(char *str1, char *str2);
+void	error_mes(int n, t_cub	*data);
+char	*line(char *buffer, int fd, t_cub *data);
+void	check_name(char *str, t_cub *data);
+
+//----------utile2----------//
+int		tab_len(char **tab);
+void	go_free(char **ttab, char **tab, char *buff, t_cub *data);
+
+//----------get_tex----------//
+void	get_texture(t_cub *data, char **tab, char *buff);
+void	get_texture2(t_cub *data, char **tab, char **g_free);
+void	get_texture3(char *str, t_texture *tex, int n);
+char	*set_space(char *str);
+int		alloc_space(char *str);
+
+//----------get_tex_utile----------//
+int		check_full(t_texture *tex);
+int		lil_tex(char *str);
+int		big_tex(char *str);
+int		what_tex(char *str);
+void	free_d_tex(t_texture *tex, int n);
+
+//----------get_data----------//
+void	get_data(t_cub *data, char **map, char *buff);
+void	set_tex(t_texture *tex);
+
+//----------gat_map----------//
+int		get_map_size(t_cub *data, char *buff);
+char	**get_map(int n, char *buff);
+char	*put_line(char *src);
+int		c_back_n(char *str);
+
+//----------pars_map----------//
+void	pars_map(t_cub *data);
+void	check_around(t_cub *data, int i, int j);
+void	check_close_map(t_cub *data);
+
+//----------pars_map_utile1----------//
+int		map_char(char c);
+int		n_player(char c);
+int		is_out(char c);
+void	check_bad_char(t_cub *data);
+void	check_n_player(t_cub *data);
+
+//----------pars_map_utile2----------//
+int		check_val(t_color *col);
+void	get_fl(t_cub *data);
+void	get_ce(t_cub *data);
+
 
 // free and exit
 
