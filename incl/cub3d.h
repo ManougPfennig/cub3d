@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/18 15:46:46 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:18:12 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
 # define WHITE 0x00FFFFFF
+# define HIT_WALL 1
+# define TRUE 1
+# define FALSE 0
 
 # define N_WALL 10
 # define S_WALL 20
@@ -166,7 +169,8 @@ void		pixel_put(t_img *img, int x, int y, int color);
 void		display_minimap(t_cub *cub, t_img *frame);
 void		toggle_map_display(t_cub *cub);
 void		move_player(t_cub *cub, double x, double y);
-void		rotate_player(t_cub *cub, int dir);
+void	move_player_side(t_cub *cub, int key);
+void		rotate_player(t_cub *cub, int dir, double rot);
 void		raycasting(t_cub *cub, t_img *frame);
 void		new_frame(t_cub *cub);
 void		exit_game(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 01:56:56 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 15:39:33 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:06:49 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,29 @@ void	move_player(t_cub *cub, double x, double y)
 		return ;
 	if (new_y >= ft_strlen(cub->map[(int)new_x]))
 		return ;
+//	if (cub->map[(int)new_x][(int)new_y] == '1')
+//		return ;													BONUS
 	cub->pos[0] = new_x;
 	cub->pos[1] = new_y;
 }
 
-void	rotate_player(t_cub *cub, int dir)
+void	move_player_side(t_cub *cub, int key)
+{
+	if (key == A_KEY)
+	{
+		rotate_player(cub, LEFT_TURN, (M_PI / 2));
+		move_player(cub, STEP_SIZE, STEP_SIZE);
+		rotate_player(cub, RIGHT_TURN, (M_PI / 2));
+	}
+	else if (key == D_KEY)
+	{
+		rotate_player(cub, RIGHT_TURN, (M_PI / 2));
+		move_player(cub, STEP_SIZE, STEP_SIZE);
+		rotate_player(cub, LEFT_TURN, (M_PI / 2));
+	}
+}
+
+void	rotate_player(t_cub *cub, int dir, double rot)
 {
 	double	oldDirX;
 	double	oldPlaneX;
@@ -37,19 +55,19 @@ void	rotate_player(t_cub *cub, int dir)
 	if (dir == RIGHT_TURN)
     {
       oldDirX = cub->dir[0];
-      cub->dir[0] = cub->dir[0] * cos(-(ROT_SPEED)) - cub->dir[1] * sin(-(ROT_SPEED));
-      cub->dir[1] = oldDirX * sin(-(ROT_SPEED)) + cub->dir[1] * cos(-(ROT_SPEED));
+      cub->dir[0] = cub->dir[0] * cos(-(rot)) - cub->dir[1] * sin(-(rot));
+      cub->dir[1] = oldDirX * sin(-(rot)) + cub->dir[1] * cos(-(rot));
       oldPlaneX = cub->plane[0];
-      cub->plane[0] = cub->plane[0] * cos(-(ROT_SPEED)) - cub->plane[1] * sin(-(ROT_SPEED));
-      cub->plane[1] = oldPlaneX * sin(-(ROT_SPEED)) + cub->plane[1] * cos(-(ROT_SPEED));
+      cub->plane[0] = cub->plane[0] * cos(-(rot)) - cub->plane[1] * sin(-(rot));
+      cub->plane[1] = oldPlaneX * sin(-(rot)) + cub->plane[1] * cos(-(rot));
     }
     if (dir == LEFT_TURN)
     {
       oldDirX = cub->dir[0];
-      cub->dir[0] = cub->dir[0] * cos(ROT_SPEED) - cub->dir[1] * sin(ROT_SPEED);
-      cub->dir[1] = oldDirX * sin(ROT_SPEED) + cub->dir[1] * cos(ROT_SPEED);
+      cub->dir[0] = cub->dir[0] * cos(rot) - cub->dir[1] * sin(rot);
+      cub->dir[1] = oldDirX * sin(rot) + cub->dir[1] * cos(rot);
       oldPlaneX = cub->plane[0];
-      cub->plane[0] = cub->plane[0] * cos(ROT_SPEED) - cub->plane[1] * sin(ROT_SPEED);
-      cub->plane[1] = oldPlaneX * sin(ROT_SPEED) + cub->plane[1] * cos(ROT_SPEED);
+      cub->plane[0] = cub->plane[0] * cos(rot) - cub->plane[1] * sin(rot);
+      cub->plane[1] = oldPlaneX * sin(rot) + cub->plane[1] * cos(rot);
     }
 }

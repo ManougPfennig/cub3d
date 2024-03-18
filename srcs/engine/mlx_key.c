@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 15:38:35 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:02:21 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 int	key_pressed(int key, t_cub *cub)
 {
-//	else if (key == A_KEY)
-//		move_player(cub, -(STEP_SIZE), 0);
-//	else if (key == D_KEY)
-//		move_player(cub, (STEP_SIZE), 0);
 	if (key == W_KEY)
-		move_player(cub, 0, -(STEP_SIZE));
+		move_player(cub, STEP_SIZE, STEP_SIZE);
 	else if (key == S_KEY)
-		move_player(cub, 0, (STEP_SIZE));
+		move_player(cub, -STEP_SIZE, -STEP_SIZE);
+	else if (key == A_KEY)
+		move_player_side(cub, A_KEY);
+	else if (key == D_KEY)
+		move_player_side(cub, D_KEY);
 	else if (key == LEFT_KEY)
-		rotate_player(cub, LEFT_TURN);
+		rotate_player(cub, LEFT_TURN, ROT_SPEED);
 	else if (key == RIGHT_KEY)
-		rotate_player(cub, RIGHT_TURN);
+		rotate_player(cub, RIGHT_TURN, ROT_SPEED);
 	else if (key == MAP_KEY)
 		toggle_map_display(cub);
 	else if (key == ESCAPE_KEY)
 		exit_game(cub);
 	printf("key: %i\n", key);
+	printf("dir:	%f	%f\n", cub->dir[0], cub->dir[1]);
 	return (0);
 }
 
@@ -39,9 +40,9 @@ int	mouse_moved(int x, int y, t_cub *cub)
 	(void)cub;
 	printf("x: -%i-      y: -%i-\n", x, y);
 	if (y < 0)
-		rotate_player(cub, LEFT_TURN);
+		rotate_player(cub, LEFT_TURN, ROT_SPEED);
 	else if (y > 0)
-		rotate_player(cub, RIGHT_TURN);
+		rotate_player(cub, RIGHT_TURN, ROT_SPEED);
 	return (0);
 }
 

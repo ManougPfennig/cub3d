@@ -6,13 +6,26 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 15:00:09 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:18:15 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
 
-void	send_ray(t_cub *cub, t_ray *r)
+int	out_of_border(t_cub *cub, t_ray *r)
+{
+	if (r->map[0] < 0.0 || r->map[0] < 0.0)
+		return (TRUE);
+	else if (!cub->map[r->map[0]])
+		return (TRUE);
+	else if (cub->map[r->map[0]][r->map[1]] == '\0')
+		return (TRUE);
+	else if (r->map[1] > ft_strlen(cub->map[r->map[0]]))
+		return (TRUE);
+	return (FALSE);
+}
+
+int	send_ray(t_cub *cub, t_ray *r)
 {
 	int	hit;
 
@@ -31,9 +44,12 @@ void	send_ray(t_cub *cub, t_ray *r)
 			r->map[1] += r->step[1];
 			r->side = 1;
 		}
+		if (out_of_border(cub, r) == TRUE)
+			return (0);
 		if (cub->map[r->map[0]][r->map[1]] == '1')
 			hit = 1;
 	}
+	return (HIT_WALL);
 }
 
 void	get_ray_len(t_ray *r)
@@ -91,9 +107,11 @@ void	raycasting(t_cub *cub, t_img *frame)
 	{
 		get_dir(cub, ray, i);
 		get_steps(cub, ray);
-		send_ray(cub, ray);
-		get_ray_len(ray);
-		display_texture(cub, frame, ray, i);
+		if (send_ray(cub, ray) == HIT_WALL)
+		{
+			get_ray_len(ray);
+			display_texture(cub, frame, ray, i);	
+		}
 		i++;
 	}
 }

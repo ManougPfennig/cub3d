@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:35:05 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 14:19:16 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:09:46 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	display_minimap(t_cub *cub, t_img *frame)
 		while (cub->map[x][y])
 		{
 			if (cub->map[x][y] == '1')
-				big_pixel_put(frame, x, y, BLUE);
+				big_pixel_put(frame, y, x, BLUE);
 			else if (cub->map[x][y] == '0')
-				big_pixel_put(frame, x, y, WHITE);
+				big_pixel_put(frame, y, x, WHITE);
 			y++;
 		}
 		x++;
 	}
-	big_pixel_put(frame, (int)cub->pos[0], (int)cub->pos[1], RED);
+	big_pixel_put(frame, (int)cub->pos[1], (int)cub->pos[0], RED);
 	return ;
 }
