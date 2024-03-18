@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/18 15:49:29 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:04:48 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 	buff = skip(buff);
 	get_data(cub, tab, buff);
 	pars_map(cub);
-	cub = init_cub();
 	setup_mlx(cub);
 	init_ceiling_floor_texture(cub);
 	setup_mlx_event(cub);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:14:31 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/16 17:39:32 by edfirmin         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:55:16 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**get_map(int n, char *buff)
 		j++;
 	}
 	map[j] = NULL;
-	free(buff);
+//	free(buff);
 	return (map);
 }
 
