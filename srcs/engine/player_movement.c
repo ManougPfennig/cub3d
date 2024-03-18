@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 01:56:56 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 18:06:49 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:50:44 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_player(t_cub *cub, double x, double y)
 	if (new_y >= ft_strlen(cub->map[(int)new_x]))
 		return ;
 //	if (cub->map[(int)new_x][(int)new_y] == '1')
-//		return ;													BONUS
+//		return ;											BONUS
 	cub->pos[0] = new_x;
 	cub->pos[1] = new_y;
 }

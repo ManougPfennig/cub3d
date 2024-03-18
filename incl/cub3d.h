@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/18 18:37:56 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:49:51 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 # define LEFT_TURN 1
 # define RIGHT_TURN 2
-# define STEP_SIZE 1.0
+# define STEP_SIZE 0.2
 # define ROT_SPEED 0.1
 
 # define W_KEY 119
