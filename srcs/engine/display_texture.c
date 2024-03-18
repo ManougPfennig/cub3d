@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:24:58 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 13:43:46 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:13:41 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ void	draw_on_column(t_draw *draw, t_ray *ray, t_img *frame, int column)
 	i = draw->start_y;
 	while (i <= draw->end_y)
 	{
-		if (ray->side == 1)
+		if (ray->type == N_WALL)
 			pixel_put(frame, column, i, GREEN);
-		else
+		else if (ray->type == S_WALL)
 			pixel_put(frame, column, i, BLUE);
+		else if (ray->type == E_WALL)
+			pixel_put(frame, column, i, RED);
+		else if (ray->type == W_WALL)
+			pixel_put(frame, column, i, WHITE);
 		i++;
 	}
 }

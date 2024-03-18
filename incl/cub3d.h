@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/18 18:18:12 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:37:56 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_ray
 {
 	int		side;
 	int		type;
+	double	line;
 	double	distance;
 	double	cameraX;
 	int		map[2];

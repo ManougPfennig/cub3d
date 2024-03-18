@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 18:18:15 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:23:16 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,31 @@ int	out_of_border(t_cub *cub, t_ray *r)
 	else if (r->map[1] > ft_strlen(cub->map[r->map[0]]))
 		return (TRUE);
 	return (FALSE);
+}
+
+void	get_texture_val(t_ray *r)
+{
+	if (r->rayDir[0] < 0 && r->rayDir[1] < 0 && r->side == 0)
+		r->type = W_WALL;
+	else if (r->rayDir[0] < 0 && r->rayDir[1] < 0)
+		r->type = N_WALL;
+	else if (r->rayDir[0] < 0 && r->rayDir[1] >= 0 && r->side == 0)
+		r->type = W_WALL;
+	else if (r->rayDir[0] < 0 && r->rayDir[1] >= 0)
+		r->type = E_WALL;
+	else if (r->rayDir[0] >= 0 && r->rayDir[1] >= 0 && r->side == 0)
+		r->type = S_WALL;
+	else if (r->rayDir[0] >= 0 && r->rayDir[1] >= 0)
+		r->type = E_WALL;
+	else if (r->rayDir[0] >= 0 && r->rayDir[1] < 0 && r->side == 0)
+		r->type = S_WALL;
+	else if (r->rayDir[0] >= 0 && r->rayDir[1] < 0)
+		r->type = N_WALL;
+}
+
+void	get_texture_line(t_ray *r)
+{
+	
 }
 
 int	send_ray(t_cub *cub, t_ray *r)
@@ -49,6 +74,8 @@ int	send_ray(t_cub *cub, t_ray *r)
 		if (cub->map[r->map[0]][r->map[1]] == '1')
 			hit = 1;
 	}
+	get_texture_val(r);
+	get_texture_line(r);
 	return (HIT_WALL);
 }
 

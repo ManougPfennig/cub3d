@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 17:46:38 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:44:29 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_ray	*init_ray(void)
 	ray = malloc(sizeof(t_ray));
 	ray->side = 0;
 	ray->type = 0;
+	ray->line = 0;
 	ray->distance = 0;
 	ray->cameraX = 0;
 	ray->map[0] = 0;
