@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:56:15 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 21:22:59 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:03:30 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	mouse_hook(int key, int x, int y, t_cub *cub)
 
 void	setup_mlx_event(t_cub *cub)
 {
+	mlx_hook(cub->win, 17, 1L << 21, exit_window, cub);
 	mlx_hook(cub->win, 2, 1L << 0, key_pressed, cub);
 	mlx_hook(cub->win, 6, 1L << 0, mouse_moved, cub);
 	mlx_mouse_hook(cub->win, mouse_hook, cub);

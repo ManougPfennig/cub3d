@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utile1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 10:44:01 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/16 18:24:01 by edfirmin         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:28:20 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,22 @@ void	free_all(t_cub *data)
 {
 	if (data->map)
 		ft_free_tab(data->map);
-	if (data->txtr && data->txtr->ceiling)
-		free(data->txtr->ceiling);
-	if (data->txtr && data->txtr->ea_path)
-		free (data->txtr->ea_path);
-	if (data->txtr && data->txtr->floor)
-		free (data->txtr->floor);
-	if (data->txtr && data->txtr->no_path)
-		free (data->txtr->no_path);
-	if (data->txtr && data->txtr->so_path)
-		free (data->txtr->so_path);
-	if (data->txtr && data->txtr->we_path)
-		free (data->txtr->we_path);
-	if (data->c)
-		free(data->c);
-	if (data->f)
-		free(data->f);
-	if (data->txtr)
-		free(data->txtr);
-	free (data);
+	free_color(data->c);
+	free_color(data->f);
+	if (data->ray)
+		free(data->ray);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	free_img(data, data->img0);
+	free_img(data, data->img1);
+	free_img(data, data->txtr->no);
+	free_img(data, data->txtr->so);
+	free_img(data, data->txtr->ea);
+	free_img(data, data->txtr->we);
+	free_texture(data->txtr);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	free(data);
 }
 
 int	ft_free2(char *str1, char *str2)
@@ -77,10 +74,8 @@ char	*line(char *buffer, int fd, t_cub *data)
 	if (fd == -1)
 		error_mes(4, data);
 	str = ft_calloc(2, sizeof(char));
-	if (!buffer)
-		buffer = ft_calloc(sizeof(char), 1);
-	if (!str || !buffer)
-		return (ft_free(str, buffer));
+	if (!str)
+		return (ft_free(str, NULL));
 	i = 1;
 	while (i == 1)
 	{

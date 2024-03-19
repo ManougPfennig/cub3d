@@ -43,9 +43,8 @@ int	get_color(t_img *img, int x, int y)
 
 void	exit_game(t_cub *cub)
 {
-	mlx_destroy_window(cub->mlx, cub->win);
-	ft_free_tab(cub->map);
 	printf("Exiting...\n");
+	free_all(cub);
 	exit(0);
 	return ;
 }

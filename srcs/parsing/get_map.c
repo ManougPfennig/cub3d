@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:14:31 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/18 15:55:16 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 09:50:58 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**get_map(int n, char *buff)
 		j++;
 	}
 	map[j] = NULL;
-//	free(buff);
+	free(buff);
 	return (map);
 }
 

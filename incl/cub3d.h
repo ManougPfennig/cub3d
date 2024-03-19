@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/18 21:49:51 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:14:58 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void		pixel_put(t_img *img, int x, int y, int color);
 void		display_minimap(t_cub *cub, t_img *frame);
 void		toggle_map_display(t_cub *cub);
 void		move_player(t_cub *cub, double x, double y);
-void	move_player_side(t_cub *cub, int key);
+void		move_player_side(t_cub *cub, int key);
 void		rotate_player(t_cub *cub, int dir, double rot);
 void		raycasting(t_cub *cub, t_img *frame);
 void		new_frame(t_cub *cub);
@@ -239,6 +239,12 @@ void	get_ce(t_cub *data);
 void		ft_exit(int code);
 void		clean_exit(t_cub *cub, int sig);
 void		check_error(char **argv);
+void		free_str(char *str);
+int			exit_window(t_cub *cub);
+void		free_color(t_color *c);
+void		free_texture(t_texture *t);
+void	free_img(t_cub *cub, t_img *img);
+
 
 // get_next_line
 
