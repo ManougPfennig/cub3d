@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:46:43 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/09 21:58:01 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:58:59 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	put_img_to_frame(t_img *img, t_img *frame, int x, int y)
 	color = 1;
 	while (color)
 	{
-		color = get_color(img, px, py);
+		color = gc(img, px, py);
 		pixel_put(frame, (x + px), (y + py), color);
 		if (px >= img->line_length / 4)
 		{

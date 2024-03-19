@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_map_utile2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:07 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/16 18:10:02 by edfirmin         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:58:38 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	check_col(char *str)
 	if (j != 2)
 		return (0);
 	return (1);
-	
 }
 
 void	get_fl(t_cub *data)
@@ -56,7 +55,7 @@ void	get_fl(t_cub *data)
 	data->f->r = ft_atoi(tab[0]);
 	data->f->g = ft_atoi(tab[1]);
 	data->f->b = ft_atoi(tab[2]);
-    ft_free_tab(tab);
+	ft_free_tab(tab);
 	if (!check_val(data->f))
 		error_mes(7, data);
 }
@@ -73,7 +72,7 @@ void	get_ce(t_cub *data)
 	data->c->r = ft_atoi(tab[0]);
 	data->c->g = ft_atoi(tab[1]);
 	data->c->b = ft_atoi(tab[2]);
-    ft_free_tab(tab);
+	ft_free_tab(tab);
 	if (!check_val(data->c))
 		error_mes(7, data);
 }

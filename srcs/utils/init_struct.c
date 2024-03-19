@@ -6,34 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 18:44:29 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:56:38 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
-
-t_ray	*init_ray(void)
-{
-	t_ray	*ray;
-
-	ray = malloc(sizeof(t_ray));
-	ray->side = 0;
-	ray->type = 0;
-	ray->line = 0;
-	ray->distance = 0;
-	ray->cameraX = 0;
-	ray->map[0] = 0;
-	ray->sideDist[0] = 0;
-	ray->step[0] = 0;
-	ray->rayDir[0] = 0;
-	ray->deltaDist[0] = 0;
-	ray->map[1] = 0;
-	ray->sideDist[1] = 0;
-	ray->step[1] = 0;
-	ray->rayDir[1] = 0;
-	ray->deltaDist[1] = 0;
-	return (ray);
-}
 
 t_texture	*init_texture(void)
 {
@@ -79,6 +56,22 @@ t_img	*init_img(void)
 	return (img);
 }
 
+void	init_cub2(t_cub *cub)
+{
+	cub->map = NULL;
+	cub->mlx = NULL;
+	cub->win = NULL;
+	cub->img0 = NULL;
+	cub->img1 = NULL;
+	cub->toggle_map = 1;
+	cub->floor_clr = 0;
+	cub->ceiling_clr = 0;
+	cub->img_x = WIN_LEN;
+	cub->img_y = WIN_HEIGHT;
+	cub->error = 0;
+	cub->current_img = 0;
+}
+
 t_cub	*init_cub(void)
 {
 	t_cub	*cub;
@@ -94,17 +87,6 @@ t_cub	*init_cub(void)
 	cub->dir[1] = 0;
 	cub->plane[0] = 0;
 	cub->plane[1] = 0;
-	cub->map = NULL;
-	cub->mlx = NULL;
-	cub->win = NULL;
-	cub->img0 = NULL;
-	cub->img1 = NULL;
-	cub->toggle_map = 1;
-	cub->floor_clr = 0;
-	cub->ceiling_clr = 0;
-	cub->img_x = WIN_LEN;
-	cub->img_y = WIN_HEIGHT;
-	cub->error = 0;
-	cub->current_img = 0;
+	init_cub2(cub);
 	return (cub);
 }

@@ -33,7 +33,7 @@ void	pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	get_color(t_img *img, int x, int y)
+int	gc(t_img *img, int x, int y)
 {
 	char	*dst;
 

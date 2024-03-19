@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:06:34 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/18 18:01:43 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:58:06 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_player_dir(t_cub *data, char c)
 	data->plane[0] = 0;
 	data->plane[1] = (double)FOV / 100.0;
 	if (c == 'N')
-		return;
+		return ;
 	else if (c == 'S')
 		rotate_player(data, LEFT_TURN, M_PI);
 	else if (c == 'E')

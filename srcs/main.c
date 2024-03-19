@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:21 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/19 09:53:03 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:39:14 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*skip(char *str)
 {
-	int	i;
+	int		i;
 	char	*s2;
 
 	i = 0;
@@ -28,7 +28,7 @@ char	*skip(char *str)
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
-	char 	*buff;
+	char	*buff;
 	char	**tab;
 
 	cub = init_cub();

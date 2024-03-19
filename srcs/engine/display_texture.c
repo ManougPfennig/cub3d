@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:24:58 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 21:44:03 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:54:06 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,39 @@ void	init_wall_size(t_draw *draw, double distance)
 	draw->end_y = ((draw->height) / 2) + (WIN_HEIGHT / 2);
 }
 
-void    draw_on_column(t_draw *draw, t_ray *ray, t_img *frame, int column, t_cub *cub)
+void	drawn(t_draw *draw, t_img *img, int col, t_cub *cub)
 {
 	int		y;
-    double	step;
-    double	y_texture;
-	t_img	*texture;
-    
-    y_texture = 0;
-	texture = which_texture(cub, ray->type);
-    step = (double)((double)texture->height / (double)(draw->end_y - draw->start_y));
-    if (draw->start_y < 0)
-    {
-        y_texture = step * draw->start_y * -1;
-        draw->start_y = 0;
-    }
-    y = draw->start_y;
-    while (y <= draw->end_y)
-    {
-        if (y >= WIN_HEIGHT - 1)
-            break ;
-        pixel_put(frame, column, y, get_color(texture, (int)(ray->line * texture->width), y_texture));
-        y++;
-        y_texture += step;
-    }
+	double	step;
+	double	y_texture;
+	t_img	*tx;
+	t_ray	*ray;
+
+	ray = cub->ray;
+	y_texture = 0;
+	tx = which_texture(cub, ray->type);
+	step = (double)((double)tx->height / \
+	(double)(draw->end_y - draw->start_y));
+	if (draw->start_y < 0)
+	{
+		y_texture = step * draw->start_y * -1;
+		draw->start_y = 0;
+	}
+	y = draw->start_y;
+	while (y <= draw->end_y)
+	{
+		if (y >= WIN_HEIGHT - 1)
+			break ;
+		pixel_put(img, col, y, gc(tx, (int)(ray->line * tx->width), y_texture));
+		y++;
+		y_texture += step;
+	}
 }
 
-void	display_texture(t_cub *cub, t_img *frame, t_ray *ray, int column)
+void	display_texture(t_cub *cub, t_img *img, t_ray *ray, int col)
 {
 	t_draw	draw;
 
 	init_wall_size(&draw, ray->distance);
-	draw_on_column(&draw, ray, frame, column, cub);
+	drawn(&draw, img, col, cub);
 }

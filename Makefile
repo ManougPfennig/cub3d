@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/18 15:47:55 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/03/19 10:57:09 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS=	main.c \
 		engine/init_ceiling_floor_texture.c \
 		engine/new_frame.c \
 		engine/raycasting.c \
+		engine/raycasting2.c \
 		engine/set_textures.c \
 		engine/sprite_to_win.c \
 		engine/display_texture.c \
@@ -37,6 +38,7 @@ SRCS=	main.c \
 		parsing/utile2.c \
 		utils/utils.c \
 		utils/init_struct.c \
+		utils/init_struct2.c \
 		utils/clean_exit.c
 
 SRCS_DIR=$(addprefix ./srcs/, ${SRCS})

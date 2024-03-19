@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:42:31 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 14:20:09 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:41:22 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	new_frame(t_cub *cub)
 
 	frame = img_to_fill(cub);
 	fill_background(cub, frame);
-//	put_img_to_frame(cub->txtr->no, frame, 0, 0);
 	raycasting(cub, frame);
 	if (cub->toggle_map)
 		display_minimap(cub, frame);

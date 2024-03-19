@@ -6,56 +6,11 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:32:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/18 21:15:33 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:04:53 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
-
-int	out_of_border(t_cub *cub, t_ray *r)
-{
-	if (r->map[0] < 0.0 || r->map[0] < 0.0)
-		return (TRUE);
-	else if (!cub->map[r->map[0]])
-		return (TRUE);
-	else if (cub->map[r->map[0]][r->map[1]] == '\0')
-		return (TRUE);
-	else if (r->map[1] > ft_strlen(cub->map[r->map[0]]))
-		return (TRUE);
-	return (FALSE);
-}
-
-void	get_texture_val(t_ray *r)
-{
-	if (r->rayDir[0] < 0 && r->rayDir[1] < 0 && r->side == 0)
-		r->type = W_WALL;
-	else if (r->rayDir[0] < 0 && r->rayDir[1] < 0)
-		r->type = N_WALL;
-	else if (r->rayDir[0] < 0 && r->rayDir[1] >= 0 && r->side == 0)
-		r->type = W_WALL;
-	else if (r->rayDir[0] < 0 && r->rayDir[1] >= 0)
-		r->type = E_WALL;
-	else if (r->rayDir[0] >= 0 && r->rayDir[1] >= 0 && r->side == 0)
-		r->type = S_WALL;
-	else if (r->rayDir[0] >= 0 && r->rayDir[1] >= 0)
-		r->type = E_WALL;
-	else if (r->rayDir[0] >= 0 && r->rayDir[1] < 0 && r->side == 0)
-		r->type = S_WALL;
-	else if (r->rayDir[0] >= 0 && r->rayDir[1] < 0)
-		r->type = N_WALL;
-}
-
-void	get_texture_line(t_cub *cub, t_ray *r)
-{
-	int	temp;
-
-	if (r->side == 0)
-		r->line = cub->pos[1] + r->distance * r->rayDir[1];
-    else
-		r->line = cub->pos[0] + r->distance * r->rayDir[0];
-	temp = (int)r->line;
-	r->line = r->line - (double)temp;
-}
 
 int	send_ray(t_cub *cub, t_ray *r)
 {
@@ -64,15 +19,15 @@ int	send_ray(t_cub *cub, t_ray *r)
 	hit = 0;
 	while (hit == 0)
 	{
-		if (r->sideDist[0] < r->sideDist[1])
+		if (r->sidedist[0] < r->sidedist[1])
 		{
-			r->sideDist[0] += r->deltaDist[0];
+			r->sidedist[0] += r->deltadist[0];
 			r->map[0] += r->step[0];
 			r->side = 0;
 		}
 		else
 		{
-			r->sideDist[1] += r->deltaDist[1];
+			r->sidedist[1] += r->deltadist[1];
 			r->map[1] += r->step[1];
 			r->side = 1;
 		}
@@ -89,43 +44,43 @@ int	send_ray(t_cub *cub, t_ray *r)
 void	get_ray_len(t_ray *r)
 {
 	if (r->side == 0)
-		r->distance = (r->sideDist[0] - r->deltaDist[0]);
+		r->distance = (r->sidedist[0] - r->deltadist[0]);
 	else
-		r->distance = (r->sideDist[1] - r->deltaDist[1]);
+		r->distance = (r->sidedist[1] - r->deltadist[1]);
 }
 
 void	get_dir(t_cub *cub, t_ray *r, int i)
 {
-	r->cameraX = (2 * i) / (double)WIN_LEN - 1.0;
+	r->camx = (2 * i) / (double)WIN_LEN - 1.0;
 	r->map[0] = (int)cub->pos[0];
 	r->map[1] = (int)cub->pos[1];
-	r->rayDir[0] = cub->dir[0] + cub->plane[0] * r->cameraX;
-	r->rayDir[1] = cub->dir[1] + cub->plane[1] * r->cameraX;
-	r->deltaDist[0] = fabs(1 / r->rayDir[0]);
-	r->deltaDist[1] = fabs(1 / r->rayDir[1]);
+	r->raydir[0] = cub->dir[0] + cub->plane[0] * r->camx;
+	r->raydir[1] = cub->dir[1] + cub->plane[1] * r->camx;
+	r->deltadist[0] = fabs(1 / r->raydir[0]);
+	r->deltadist[1] = fabs(1 / r->raydir[1]);
 }
 
 void	get_steps(t_cub *cub, t_ray *r)
 {
-	if (r->rayDir[0] < 0)
+	if (r->raydir[0] < 0)
 	{
 		r->step[0] = -1.0;
-		r->sideDist[0] = (cub->pos[0] - r->map[0]) * r->deltaDist[0];
+		r->sidedist[0] = (cub->pos[0] - r->map[0]) * r->deltadist[0];
 	}
 	else
 	{
 		r->step[0] = 1.0;
-		r->sideDist[0] = (r->map[0] + 1.0 - cub->pos[0]) * r->deltaDist[0];
+		r->sidedist[0] = (r->map[0] + 1.0 - cub->pos[0]) * r->deltadist[0];
 	}
-	if (r->rayDir[1] < 0)
+	if (r->raydir[1] < 0)
 	{
 		r->step[1] = -1.0;
-		r->sideDist[1] = (cub->pos[1] - r->map[1]) * r->deltaDist[1];
+		r->sidedist[1] = (cub->pos[1] - r->map[1]) * r->deltadist[1];
 	}
 	else
 	{
 		r->step[1] = 1.0;
-		r->sideDist[1] = (r->map[1] + 1.0 - cub->pos[1]) * r->deltaDist[1];
+		r->sidedist[1] = (r->map[1] + 1.0 - cub->pos[1]) * r->deltadist[1];
 	}
 }
 
@@ -135,7 +90,6 @@ void	raycasting(t_cub *cub, t_img *frame)
 	int		i;
 
 	i = 0;
-
 	ray = cub->ray;
 	while (i < WIN_LEN)
 	{
@@ -144,7 +98,7 @@ void	raycasting(t_cub *cub, t_img *frame)
 		if (send_ray(cub, ray) == HIT_WALL)
 		{
 			get_ray_len(ray);
-			display_texture(cub, frame, ray, i);	
+			display_texture(cub, frame, ray, i);
 		}
 		i++;
 	}
