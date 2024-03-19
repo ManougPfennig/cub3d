@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/19 11:24:07 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/03/19 11:26:14 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ $(NAME): ${MLX} ${OBJECTS}
 all: $(NAME)
 
 $(MLX):
+	make -C $(LIB_PATH) all
 	make -C $(MLX_PATH) all
 
 clean:
@@ -65,6 +66,7 @@ clean:
 	rm -f ${OBJECTS}
 
 fclean: clean
+	make -C $(LIB_PATH) fclean
 	rm -f $(NAME)
 
 re: fclean all
