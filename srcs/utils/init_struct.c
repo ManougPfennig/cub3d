@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:44:07 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/19 10:56:38 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:22:30 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void	init_cub2(t_cub *cub)
 	cub->img_y = WIN_HEIGHT;
 	cub->error = 0;
 	cub->current_img = 0;
+	cub->keys[0] = 0;
+	cub->keys[1] = 0;
+	cub->keys[2] = 0;
+	cub->keys[3] = 0;
+	cub->keys[4] = 0;
+	cub->keys[5] = 0;
 }
 
 t_cub	*init_cub(void)

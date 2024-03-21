@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:24:58 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/19 10:54:06 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:14:56 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	drawn(t_draw *draw, t_img *img, int col, t_cub *cub)
 	y = draw->start_y;
 	while (y <= draw->end_y)
 	{
-		if (y >= WIN_HEIGHT - 1)
+		if (y >= WIN_HEIGHT - 1 || y_texture >= tx->height)
 			break ;
 		pixel_put(img, col, y, gc(tx, (int)(ray->line * tx->width), y_texture));
 		y++;

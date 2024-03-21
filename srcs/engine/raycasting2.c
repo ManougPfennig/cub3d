@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 10:43:58 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/19 11:05:30 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:36:24 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	get_texture_line(t_cub *cub, t_ray *r)
 		r->line = cub->pos[0] + r->distance * r->raydir[0];
 	temp = (int)r->line;
 	r->line = r->line - (double)temp;
+	if (r->line < 0.0)
+		r->line = 0.0;
+	else if (r->line > 1.0)
+		r->line = 1;
 }
 
 int	out_of_border(t_cub *cub, t_ray *r)

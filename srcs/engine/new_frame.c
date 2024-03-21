@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 02:42:31 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/19 10:41:22 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:04:13 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,5 @@ void	new_frame(t_cub *cub)
 	frame = img_to_fill(cub);
 	fill_background(cub, frame);
 	raycasting(cub, frame);
-	if (cub->toggle_map)
-		display_minimap(cub, frame);
 	mlx_put_image_to_window(cub->mlx, cub->win, frame->img, 0, 0);
 }

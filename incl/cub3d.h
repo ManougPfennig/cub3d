@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:51:00 by gfabre            #+#    #+#             */
-/*   Updated: 2024/03/19 11:02:28 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:20:40 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_cub
 	int			img_y;
 	int			error;
 	int			current_img;
+	int			keys[6];
 }				t_cub;
 
 // initialise structures
