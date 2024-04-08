@@ -6,7 +6,7 @@
 #    By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 16:51:08 by mapfenni          #+#    #+#              #
-#    Updated: 2024/03/21 17:17:01 by mapfenni         ###   ########.fr        #
+#    Updated: 2024/04/08 15:21:28 by mapfenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,12 @@ SOURCES=srcs/main.c \
 		srcs/utils/clean_exit.c
 		
 OBJECTS  = ${SOURCES:.c=.o}
-NAME = cub3d
+NAME = cub3D
 
 MLX_PATH = mlx/mlx_linux
 LIB_PATH = libft
 MLX      = $(MLX_PATH)/libmlx.a
-CFLAGS     = -Wall -Wextra -Werror -gdwarf-4
+CFLAGS     = -Wall -Wextra -Werror #-gdwarf-4
 LDFLAGS    = -L ${MLX_PATH} -lm -lbsd -lX11 -lXext -lmlx
 
 .c.o:

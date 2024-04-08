@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utile1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 10:44:01 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/19 10:28:20 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:04:36 by edfirmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	free_all(t_cub *data)
 	free_img(data, data->txtr->ea);
 	free_img(data, data->txtr->we);
 	free_texture(data->txtr);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+		data->mlx = NULL;
+	}
 	free(data);
 }
 
@@ -96,12 +100,8 @@ void	check_name(char *str, t_cub *data)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] && str[i] != '.')
-		i++;
-	if (!str[i])
-		error_mes(1, data);
-	if (ft_strlen(&str[i]) != 4)
+	i = ft_strlen(str) - 4;
+	if (i < 1)
 		error_mes(1, data);
 	if (!ft_strstr(&str[i], ".cub"))
 		error_mes(1, data);

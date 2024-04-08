@@ -6,7 +6,7 @@
 /*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:39:27 by mapfenni          #+#    #+#             */
-/*   Updated: 2024/03/08 18:25:02 by mapfenni         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:23:27 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_img	*setup_texture(t_cub *cub, char *path)
 
 void	set_textures(t_cub *cub)
 {
-	cub->txtr->no = setup_texture(cub, cub->txtr->no_path);
+	cub->txtr->no = setup_texture(cub, cub->txtr->we_path);
 	cub->txtr->so = setup_texture(cub, cub->txtr->so_path);
-	cub->txtr->we = setup_texture(cub, cub->txtr->we_path);
+	cub->txtr->we = setup_texture(cub, cub->txtr->no_path);
 	cub->txtr->ea = setup_texture(cub, cub->txtr->ea_path);
 }

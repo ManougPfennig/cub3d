@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfirmin <edfirmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mapfenni <mapfenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 10:57:09 by edfirmin          #+#    #+#             */
-/*   Updated: 2024/03/16 18:39:25 by edfirmin         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:21:52 by mapfenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
+
+void	skip_n(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	i--;
+	while (tab[i] && tab[i][0] == '\n')
+	{
+		free(tab[i]);
+		i--;
+	}
+	tab[i + 1] = NULL;
+}
 
 void	get_data(t_cub *data, char **map, char *buff)
 {
@@ -20,6 +36,8 @@ void	get_data(t_cub *data, char **map, char *buff)
 	ft_free_tab(map);
 	n = get_map_size(data, buff);
 	data->map = get_map(n, buff);
+	if (data->map && data->map[0])
+		skip_n(data->map);
 }
 
 void	set_tex(t_texture *tex)
